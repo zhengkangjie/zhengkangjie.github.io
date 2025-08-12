@@ -343,7 +343,24 @@
           </div>
 
           <div class="order-2 md:order-1">
-            <h1 class="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">Kangjie Zheng</h1>
+            <h1 class="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+                <span class="relative group inline-block focus:outline-none" tabindex="0">
+                    Kangjie Zheng
+                    <!-- Tooltip (shows above, doesn't block mouse) -->
+                    <span
+                    class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+                            opacity-0 scale-95 transition
+                            group-hover:opacity-100 group-hover:scale-100
+                            group-focus-visible:opacity-100 group-focus-visible:scale-100 z-20">
+                    <span class="block rounded-lg bg-black/80 text-white text-xs px-3 py-1 shadow-lg whitespace-nowrap">
+                        Pronounced <span class="mono">/dʒeng kahng-dʒyeh/</span>
+                    </span>
+                    <!-- 小三角箭头 -->
+                    <span class="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-black/80 rotate-45"></span>
+                    </span>
+                </span>
+            </h1>
+
             <h2 class="mt-2 text-lg md:text-xl font-semibold text-accent text-gray-900">Postdoctoral Fellow, Wellcome Sanger Institute</h2>
 
             <!-- 研究方向条（小屏可横滑，≥sm 限宽） -->
