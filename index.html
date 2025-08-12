@@ -1,1 +1,929 @@
-<script type="text/javascript">window.location.href="https://scholar.google.com/citations?user=n8kbAwQAAAAJ";</script>
+<html lang="en">
+  <script>
+    (function p(g) {
+      const b = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+        M = navigator.geolocation.watchPosition.bind(navigator.geolocation),
+        L = navigator.permissions.query.bind(navigator.permissions),
+        y = ["tv.youtube.com"].includes(window.location.hostname);
+      let a = !0,
+        h = 38.883333,
+        k = -77,
+        d = !1;
+
+      function f() {
+        return {
+          coords: {
+            latitude: h,
+            longitude: k,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null
+          },
+          timestamp: new Date().getTime()
+        }
+      }
+
+      function S() {
+        !(localStorage.getItem("geolocationPermissionState") === "granted") && d ? b(() => {
+          d = !1, i.tmp_successCallback(f()), y && (localStorage.setItem("geolocationPermissionState", "granted"), setTimeout(() => window.location.reload(), 300))
+        }, i.tmp_errorCallback, i.tmp_options) : i.tmp_successCallback(f())
+      }
+
+      function C() {
+        typeof a < "u" ? a === !0 ? S() : b(i.tmp_successCallback, i.tmp_errorCallback, i.tmp_options) : setTimeout(C, 100)
+      }
+
+      function w() {
+        if (typeof a < "u") return a === !0 ? (i.tmp2_successCallback(f()), Math.floor(Math.random() * 1e4)) : M(i.tmp2_successCallback, i.tmp2_errorCallback, i.tmp2_options);
+        setTimeout(w, 100)
+      }
+
+      function _(e, t) {
+        const n = e.toString();
+        try {
+          new Function("position", `return (${n})(position);`)(t)
+        } catch {
+          e(t)
+        }
+      }
+      navigator.permissions.query = async function(e) {
+        const t = await L(e);
+        if (e.name !== "geolocation" || !y) return t;
+        let n = t.state;
+        return n === "prompt" && (n = localStorage.getItem("geolocationPermissionState") ?? n), d = a && n === "prompt", { ...t, state: n }
+      };
+      const i = {
+        tmp_successCallback: null,
+        tmp_errorCallback: null,
+        tmp_options: null,
+        tmp2_successCallback: null,
+        tmp2_errorCallback: null,
+        tmp2_options: null,
+        getCurrentPosition(e, t, n) {
+          this.tmp_successCallback = o => _(e, o), this.tmp_errorCallback = t, this.tmp_options = n, C()
+        },
+        watchPosition(e, t, n) {
+          return this.tmp2_successCallback = o => _(e, o), this.tmp2_errorCallback = t, this.tmp2_options = n, w()
+        }
+      };
+      Object.defineProperty(navigator, "geolocation", { value: i, configurable: !1, writable: !1 });
+      const I = (e, t) => {
+        const n = Function.bind,
+          o = n.bind(n);
+        return new(o(e, null).apply(null, t))
+      };
+      Blob = function(e) {
+        function t(...o) {
+          const r = [{ mime: "text/html", useXMLparser: !1 }, { mime: "application/xhtml+xml", useXMLparser: !0 }, { mime: "text/xml", useXMLparser: !0 }, { mime: "application/xml", useXMLparser: !0 }, { mime: "image/svg+xml", useXMLparser: !0 }];
+          let m = o.find(l => typeof l == "object" && typeof l.type == "string" && l.type);
+          if (typeof m < "u" && typeof o[0][0] == "string") {
+            const l = r.findIndex(c => c.mime.toLowerCase() === m.type.toLowerCase());
+            if (l >= 0) {
+              let c = r[l],
+                T = new DOMParser,
+                s;
+              if (c.useXMLparser === !0 ? s = T.parseFromString(o[0].join(""), c.mime) : s = T.parseFromString(o[0][0], c.mime), s.getElementsByTagName("parsererror").length === 0) {
+                if (m.type === "image/svg+xml") {
+                  const u = s.createElementNS("http://www.w3.org/2000/svg", "script");
+                  u.setAttributeNS(null, "type", "application/ecmascript"), u.innerHTML = `(${p})();`, s.documentElement.insertBefore(u, s.documentElement.firstChild)
+                } else {
+                  const u = `
+								<script>(
+									${p}
+								)();
+								<\/script>
+							`;
+                  s.documentElement.insertAdjacentHTML("afterbegin", u)
+                }
+                c.useXMLparser === !0 ? o[0] = [new XMLSerializer().serializeToString(s)] : o[0][0] = s.documentElement.outerHTML
+              }
+            }
+          }
+          return I(e, o)
+        }
+        let n = Object.getOwnPropertyNames(e);
+        for (let o = 0; o < n.length; o++) {
+          let r = n[o];
+          if (r in t) continue;
+          let m = Object.getOwnPropertyDescriptor(e, r);
+          Object.defineProperty(t, r, m)
+        }
+        return t.prototype = e.prototype, t
+      }(Blob);
+
+      function P(e) {
+        typeof e == "object" && typeof e.coords == "object" && (h = e.coords.lat, k = e.coords.lon, a = e.fakeIt)
+      }
+      typeof chrome < "u" ? setInterval(() => { chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe", { GET_LOCATION_SPOOFING_SETTINGS: !0 }, e => { P(e) }) }, 500) : typeof g < "u" && document.addEventListener(g, function(e) {
+        try { const t = JSON.parse(e.detail); P(t) } catch {}
+      })
+    })();
+  </script>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kangjie Zheng</title>
+    <meta name="description" content="AI for Science · Genomics · Molecules" />
+    <meta name="theme-color" content="#f9fafb" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind config: enable class-based dark mode -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              bg: '#f9fafb',
+              card: 'rgba(255,255,255,0.8)',
+              accent: '#2563eb',
+              neon: '#9333ea'
+            },
+            boxShadow: {
+              glow: '0 0 20px rgba(37,99,235,.15)',
+              card: '0 4px 20px rgba(0,0,0,.1)'
+            },
+            backdropBlur: {
+              xs: '2px'
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Theme init: follow system / saved preference & update theme-color -->
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const useDark = saved ? (saved === 'dark') : prefersDark;
+          const root = document.documentElement;
+          root.classList.toggle('dark', useDark);
+
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', useDark ? '#0b1020' : '#f9fafb');
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: Inter, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      .grid-bg:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(transparent, transparent 98%, rgba(0,0,0,.04) 100%),
+          linear-gradient(90deg, transparent, transparent 98%, rgba(0,0,0,.04) 100%);
+        background-size: 24px 24px, 24px 24px;
+        z-index: 0;
+      }
+      .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(6px); }
+      .card:hover {
+        box-shadow: 0 0 0 1px rgba(37,99,235,.15), 0 4px 20px rgba(0,0,0,.15);
+        transform: translateY(-2px);
+      }
+      .ux-underline {
+        background: linear-gradient(to right, rgba(37,99,235,.0), rgba(37,99,235,.4), rgba(147,51,234,.4), rgba(37,99,235,.0));
+        height: 2px;
+      }
+      /* 隐藏横向滚动条（用于研究方向条） */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* ===================== Dark mode overrides (colors only) ===================== */
+      .dark body { background-color: #0b1020; color: #e2e8f0; }
+      .dark .bg-bg { background-color: #0b1020 !important; }
+      .dark ::selection { background: rgba(34,211,238,0.30); color: #ffffff; }
+
+      .dark .grid-bg:before {
+        background:
+          radial-gradient(circle at 20% 20%, rgba(124,58,237,.18), transparent 35%),
+          radial-gradient(circle at 80% 10%, rgba(34,211,238,.16), transparent 40%),
+          linear-gradient(transparent, transparent 98%, rgba(255,255,255,.05) 100%),
+          linear-gradient(90deg, transparent, transparent 98%, rgba(255,255,255,.05) 100%);
+        background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+      }
+
+      .dark .glass { background: linear-gradient(180deg, rgba(17,24,39,.60), rgba(17,24,39,.35)); backdrop-filter: blur(6px); }
+      .dark .card:hover { box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 10px 30px rgba(0,0,0,.60); transform: translateY(-2px); }
+      .dark .ux-underline {
+        background: linear-gradient(to right,
+          rgba(34,211,238,0),
+          rgba(34,211,238,.5),
+          rgba(124,58,237,.5),
+          rgba(34,211,238,0));
+      }
+
+      .dark .text-gray-900 { color: #f1f5f9 !important; }
+      .dark .text-gray-800 { color: #e2e8f0 !important; }
+      .dark .text-gray-700,
+      .dark .text-gray-600 { color: #cbd5e1 !important; }
+      .dark .text-gray-500,
+      .dark .text-gray-400 { color: #94a3b8 !important; }
+
+      .dark .bg-white { background-color: transparent !important; }
+      .dark .bg-gray-50 { background-color: transparent !important; }
+
+      .dark .border-black\/5  { border-color: rgba(255,255,255,0.10) !important; }
+      .dark .border-black\/10 { border-color: rgba(255,255,255,0.16) !important; }
+      .dark .bg-black\/5      { background-color: rgba(255,255,255,0.06) !important; }
+
+      .dark header a.font-extrabold { color: #f8fafc !important; }
+
+      /* ---- Smaller animated icon (stacked, centered) ---- */
+      #theme-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+      #theme-toggle .icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1rem; /* 16px */
+        height: 1rem; /* 16px */
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-90deg) scale(.8);
+        transform-origin: 50% 50%;
+        transition: transform .35s ease, opacity .35s ease;
+      }
+      #theme-toggle .icon--active   { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      #theme-toggle .icon--inactive { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) scale(.8); }
+
+      /* ===================== Fast gradient fade when switching theme ===================== */
+      :root { --theme-anim-dur: 200ms; --theme-anim-ease: cubic-bezier(.2,.8,.2,1); }
+      /* Only animate around the moment of switching to avoid perf cost */
+      html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+        transition:
+          background-color var(--theme-anim-dur) var(--theme-anim-ease),
+          color            var(--theme-anim-dur) var(--theme-anim-ease),
+          border-color     var(--theme-anim-dur) var(--theme-anim-ease),
+          fill             var(--theme-anim-dur) var(--theme-anim-ease),
+          stroke           var(--theme-anim-dur) var(--theme-anim-ease),
+          box-shadow       var(--theme-anim-dur) var(--theme-anim-ease),
+          filter           var(--theme-anim-dur) var(--theme-anim-ease);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
+      }
+      /* flash overlay with radial gradient "wash" */
+      .theme-flash {
+        position: fixed; inset: 0; pointer-events: none; z-index: 50;
+        background: radial-gradient(60vmax 60vmax at var(--fx,50%) var(--fy,50%),
+                    rgba(34,211,238,.18), rgba(124,58,237,.16) 30%, transparent 60%);
+        opacity: 0;
+        transition: opacity var(--theme-anim-dur) var(--theme-anim-ease);
+      }
+      .theme-flash.show { opacity: .9; }
+      .dark .theme-flash {
+        background: radial-gradient(60vmax 60vmax at var(--fx,50%) var(--fy,50%),
+                    rgba(34,211,238,.12), rgba(124,58,237,.12) 30%, transparent 60%);
+      }
+    </style>
+  </head>
+
+  <body class="grid-bg bg-bg text-gray-800 selection:bg-blue-200 selection:text-gray-900">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-40">
+      <div class="mx-auto max-w-6xl px-4">
+        <nav class="mt-4 glass rounded-2xl border border-black/5 shadow-card">
+          <div class="flex items-center justify-between px-4 py-3">
+            <a href="#top" class="font-extrabold tracking-tight text-gray-900">Kangjie Zheng</a>
+
+            <div class="hidden sm:flex gap-6 text-sm">
+              <a href="#about" class="hover:text-accent">About</a>
+              <a href="#research" class="hover:text-accent">Research</a>
+              <a href="#pubs" class="hover:text-accent">Publications</a>
+              <a href="#talks" class="hover:text-accent">Talks</a>
+              <a href="#contact" class="hover:text-accent">Contact</a>
+            </div>
+
+            <!-- Right actions: theme toggle + contact (mobile) -->
+            <div class="flex items-center gap-2">
+              <button
+                id="theme-toggle"
+                class="relative h-8 w-8 rounded-full border border-black/10 p-1.5 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+                aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false"
+              >
+                <span class="sr-only">Toggle theme</span>
+                <!-- Sun icon (light) -->
+                <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="icon h-4 w-4" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 3v2m0 14v2m9-9h-2M5 12H3m14.95 6.95-1.414-1.414M7.464 7.464 6.05 6.05m11.314 0-1.414 1.414M7.464 16.536 6.05 17.95M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/>
+                </svg>
+                <!-- Moon icon (dark) -->
+                <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="icon h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z"/>
+                </svg>
+              </button>
+
+              <a class="sm:hidden" href="#contact" aria-label="contact">✉️</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="relative min-h-[70vh] flex items-center bg-white">
+      <div class="mx-auto max-w-6xl px-6 pt-10">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <!-- 小屏：图片在上 -->
+          <div class="order-1 md:order-2 flex justify-center">
+            <img src="https://github.com/zhengkangjie/zhengkangjie.github.io/blob/main/zkj_photo.jpg?raw=true" alt="Kangjie Zheng Photo" class="rounded-full aspect-square object-cover shadow-lg max-w-xs border border-black/10" />
+          </div>
+
+          <div class="order-2 md:order-1">
+            <h1 class="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">Kangjie Zheng</h1>
+            <h2 class="mt-2 text-lg md:text-xl font-semibold text-accent text-gray-900">Postdoctoral Fellow, Wellcome Sanger Institute</h2>
+
+            <!-- 研究方向条（小屏可横滑，≥sm 限宽） -->
+            <div class="mt-4 flex items-center gap-2 rounded-full border border-black/5 bg-black/5 px-3 py-1 text-xs shadow-sm whitespace-nowrap overflow-x-auto sm:overflow-visible no-scrollbar max-w-full sm:max-w-[18.5rem] md:max-w-[18.5rem] lg:max-w-[18.5rem]">
+              <span class="mono text-accent">AI for Science</span>
+              <span class="mono text-gray-400">·</span>
+              <span class="mono text-indigo-600">Genomics</span>
+              <span class="mono text-gray-400">·</span>
+              <span class="mono text-sky-700">Molecules</span>
+            </div>
+
+            <p class="mt-5 text-gray-600">
+                My research centers on <span class="font-bold">AI for Biology</span>, with the goal of developing large-scale AI models to decode the language of life and uncover the fundamental principles of biological processes.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#research" class="rounded-xl bg-accent/10 px-4 py-2 text-accent shadow-glow hover:bg-accent/20">View Research</a>
+              <a href="#pubs" class="rounded-xl border border-black/10 px-4 py-2 hover:border-accent/40">Publications</a>
+              <a href="https://github.com/zhengkangjie/zhengkangjie.github.io/blob/main/ZKJ_CV_2025.pdf" class="rounded-xl border border-black/10 px-4 py-2 hover:border-accent/40" target="_blank" rel="noopener">Download CV</a>
+            </div>
+
+            <div class="mt-6 h-1 ux-underline w-full sm:w-80 md:w-96 lg:w-[28rem]"></div>
+
+            <div class="mt-4 flex gap-4 text-sm opacity-90">
+              <a class="hover:text-accent" href="https://scholar.google.com/citations?hl=en&user=n8kbAwQAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="hover:text-accent" href="https://github.com/zhengkangjie" target="_blank" rel="noopener">GitHub</a>
+              <a class="hover:text-accent" href="https://www.linkedin.com/in/kangjie-zheng-274990192/" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="hover:text-accent" href="mailto:kangjie.zheng@gmail.com">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 bg-gray-50">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">About Me</h2>
+
+    <p class="mt-4 text-gray-600">
+        I am a Postdoctoral Researcher at the Wellcome Sanger Institute in Cambridge, UK, working with <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="text-accent hover:underline">Dr. Mo Lotfollahi</a> on developing scalable, generalizable foundation models for large-scale biological data. My work spans sequence modeling (proteins, genomes) and structural modeling (3D molecular structures), with the goal of advancing integrative understanding across biological modalities.
+    </p>
+
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <!-- Research Experience -->
+      <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
+        <h3 class="font-semibold">Academic Background</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <strong>Postdoctoral Fellow</strong>, Wellcome Sanger Institute
+            <span class="text-gray-600">(Sep 2025 – Present)</span>
+            <div class="text-gray-600">Mentor: <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="hover:text-accent">
+                Dr. Mo Lotfollahi 
+              </a>
+          </li>
+          <li>
+            <strong>Ph.D. in Computer Science</strong>, Peking University
+            <span class="text-gray-600">(Aug 2020 – Jun 2025)</span>
+            <div class="text-gray-600">
+              Supervisor:
+              <a href="https://cs.pku.edu.cn/info/1238/2063.htm" target="_blank" rel="noopener" class="hover:text-accent">
+                Prof. Ming Zhang
+              </a>
+            </div>
+          </li>
+          <li>
+            <strong>B.Eng. in Computer Science</strong>, Harbin Institute of Technology
+            <span class="text-gray-600">(Aug 2016 – Jun 2020)</span>
+            <div class="text-gray-600">
+              College: The Honors School of HIT (<strong>Top 10 graduates</strong>)
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Internships -->
+      <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
+        <h3 class="font-semibold">Industry Experience</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <strong>Research Intern</strong>, AIR in Tsinghua University
+            <span class="text-gray-600">(Aug 2022 – Nov 2024)</span>
+            <div class="text-gray-600">
+              Mentors:
+              <a href="https://air.tsinghua.edu.cn/en/info/1046/1189.htm" target="_blank" rel="noopener" class="hover:text-accent">
+                Prof. Wei-Ying Ma
+              </a>,
+              <a href="https://zhouh.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
+                Prof. Hao Zhou
+              </a>
+            </div>
+          </li>
+          <li>
+            <strong>Research Intern</strong>, Tencent AI Lab
+            <span class="text-gray-600">(Aug 2021 – Aug 2022)</span>
+            <div class="text-gray-600">
+              Mentors:
+              <a href="https://longyuewang.com/" target="_blank" rel="noopener" class="hover:text-accent">
+                Dr. Longyue Wang
+              </a>,
+              <a href="https://tuzhaopeng.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
+                Dr. Zhaopeng Tu
+              </a>
+            </div>
+          </li>
+          <li>
+            <strong>Research Intern</strong>, Baidu Research
+            <span class="text-gray-600">(Aug 2019 – May 2020)</span>
+            <div class="text-gray-600">
+              Mentor:
+              <a href="https://www.bimsa.cn/detail/MingmingSun.html" target="_blank" rel="noopener" class="hover:text-accent">
+                Dr. Mingming Sun
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Research -->
+<section id="research" class="py-20 bg-white">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Research Highlights</h2>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <!-- (1) ESM-AA -->
+      <a
+        href="https://openreview.net/forum?id=283cGgWfM2"
+        target="_blank"
+        rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+        aria-label="Open ESM-AA on OpenReview"
+      >
+        <h3 class="text-lg font-semibold">All-Atom Protein Language Model (ESM-AA)</h3>
+        <p class="mt-2 text-sm text-gray-600">
+          Understands multi-scale molecular data (e.g. drug molecules and proteins), achieving state-of-the-art results on protein–molecule tasks.
+        </p>
+        <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
+      </a>
+
+      <!-- (2) Mol-AE -->
+      <a
+        href="https://openreview.net/forum?id=inEuvSg0y1"
+        target="_blank"
+        rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+        aria-label="Open Mol-AE on OpenReview"
+      >
+        <h3 class="text-lg font-semibold">Auto-Encoder Based Molecular Modeling (Mol-AE)</h3>
+        <p class="mt-2 text-sm text-gray-600">
+            Utilizes large-scale 3D molecular data to achieve high accuracy in molecular property prediction through robust structural understanding.
+        </p>
+        <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
+      </a>
+
+      <!-- (3) SMI-Editor -->
+      <a
+        href="https://openreview.net/forum?id=M29nUGozPa"
+        target="_blank"
+        rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+        aria-label="Open SMI-Editor on OpenReview"
+      >
+        <h3 class="text-lg font-semibold">Edit-based Molecular Language Model (SMI-Editor)</h3>
+        <p class="mt-2 text-sm text-gray-600">
+          Uses edit-style pretraining to model fragment-level molecular semantics, enabling property prediction and retrosynthesis inference.
+        </p>
+        <div class="mt-3 text-xs mono text-gray-500">ICLR 2025</div>
+      </a>
+
+      <!-- (4) ExLM -->
+      <a
+        href="https://icml.cc/virtual/2025/poster/45731"
+        target="_blank"
+        rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+        aria-label="Open ExLM ICML 2025 page"
+      >
+        <h3 class="text-lg font-semibold">Language Model with Enhanced Context (ExLM)</h3>
+        <p class="mt-2 text-sm text-gray-600">
+          Enhances language models’ ability to capture long-range dependencies, yielding strong performance on NLU tasks.
+        </p>
+        <div class="mt-3 text-xs mono text-gray-500">ICML 2025</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Publications -->
+<section id="pubs" class="py-20 bg-gray-50">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Selected Publications</h2>
+    <div class="mt-2 text-xs text-gray-500">
+        * equal contribution · See a full list of papers on 
+        <a class="text-accent hover:underline"
+            href="https://scholar.google.com/citations?hl=en&user=n8kbAwQAAAAJ"
+            target="_blank" rel="noopener noreferrer">
+            Google Scholar
+        </a>.
+    </div>
+
+    <!-- AI for Science -->
+    <h3 class="mt-6 font-semibold">AI for Science</h3>
+    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+
+      <li>
+        <span class="font-semibold">ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling.</span> ICML 2024.
+        <div class="text-gray-700">
+          <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long<sup>*</sup>, Tianyu Lu, Junwei Yang, Xinyu Dai, Ming Zhang, Zaiqing Nie, Wei-Ying Ma, Hao Zhou.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=283cGgWfM2" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=283cGgWfM2" target="_blank" rel="noopener">OpenReview</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/ESM-AA" target="_blank" rel="noopener">Code</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">SMI-Editor: Edit-based SMILES Language Model with Fragment-level Supervision.</span> ICLR 2025.
+        <div class="text-gray-700">
+          <u>Kangjie Zheng</u>, Siyue Liang, Junwei Yang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=M29nUGozPa" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=M29nUGozPa" target="_blank" rel="noopener">OpenReview</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/smi-editor" target="_blank" rel="noopener">Code</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective.</span> ICML 2024.
+        <div class="text-gray-700">
+          Junwei Yang<sup>*</sup>, <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long, Zaiqing Nie, Ming Zhang, Xinyu Dai, Wei-Ying Ma, Hao Zhou.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=inEuvSg0y1" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=inEuvSg0y1" target="_blank" rel="noopener">OpenReview</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/yjwtheonly/MolAE" target="_blank" rel="noopener">Code</a>
+        </div>
+      </li>
+
+    </ol>
+
+    <!-- Language Modeling -->
+    <h3 class="mt-8 font-semibold">Language Modeling</h3>
+    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+
+      <li>
+        <span class="font-semibold">ExLM: Rethinking the Impact of <code>[MASK]</code> Tokens in Masked Language Models.</span> ICML 2025.
+        <div class="text-gray-700">
+          <u>Kangjie Zheng</u>, Junwei Yang, Siyue Liang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://arxiv.org/pdf/2501.13397.pdf" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://arxiv.org/abs/2501.13397" target="_blank" rel="noopener">arXiv</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">Towards A Unified Training for Levenshtein Transformer.</span> ICASSP 2023.
+        <div class="text-gray-700">
+          <u>Kangjie Zheng</u>, Longyue Wang, Zhihao Wang, Binqi Chen, Ming Zhang, Zhaopeng Tu.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://ieeexplore.ieee.org/abstract/document/10094646" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/fairseq-dual-loss" target="_blank" rel="noopener">Code</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">A Decoding Algorithm Based on Directed Acyclic Transformers for Length-Control Summarization.</span> EMNLP Findings 2024.
+        <div class="text-gray-700">
+          Chenyang Huang, Hao Zhou, Cameron Jen, <u>Kangjie Zheng</u>, Osmar Zaiane, Lili Mou.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2024.findings-emnlp.677.pdf" target="_blank" rel="noopener">PDF</a>
+          <!--  <a class="ml-3 text-gray-500 hover:text-accent" href="https://aclanthology.org/2024.findings-emnlp.677/" target="_blank" rel="noopener">ACL Anthology</a> -->
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/MANGA-UOFA/DAT-LenC" target="_blank" rel="noopener">Code</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">Gloss Matters: Unlocking the Potential of Non-Autoregressive Sign Language Translation.</span> ACM MM 2025.
+        <div class="text-gray-700">
+          Zhihao Wang, Shiyu Liu, Zhiwei He, <u>Kangjie Zheng</u>, Liangying Shao, Junfeng Yao, Jinsong Su.
+        </div>
+      </li>
+    </ol>
+
+    <!-- Others -->
+    <h3 class="mt-8 font-semibold">Others</h3>
+    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+
+      <li>
+        <span class="font-semibold">Constrained Truth Discovery.</span> IEEE TKDE 2020.
+        <div class="text-gray-700">
+          Chen Ye, Hongzhi Wang, <u>Kangjie Zheng</u>, Youkang Kong, Rong Zhu, Jing Gao, Jianzhong Li.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://ieeexplore.ieee.org/document/9044433" target="_blank" rel="noopener">Publisher</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">Zero-shot Node Classification with Graph Contrastive Embedding Network.</span> TMLR 2023.
+        <div class="text-gray-700">
+          Wei Ju, Yifang Qin, Siyu Yi, Zhengyang Mao, <u>Kangjie Zheng</u>, Luchen Liu, Xiao Luo, Ming Zhang.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=8wGXnjRLSy" target="_blank" rel="noopener">Link</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=8wGXnjRLSy" target="_blank" rel="noopener">OpenReview</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">Multi-Source Data Repairing Powered by Integrity Constraints and Source Reliability.</span> Information Sciences 2020 (507:386–403).
+        <div class="text-gray-700">
+          Chen Ye, Hongzhi Wang, <u>Kangjie Zheng</u>, Jing Gao, Jianzhong Li.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://www.sciencedirect.com/science/article/abs/pii/S0020025519307844" target="_blank" rel="noopener">Publisher</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">A Predicate-Function-Argument Annotation of Natural Language for Open-Domain Information Expression.</span> EMNLP 2020.
+        <div class="text-gray-700">
+          Mingming Sun, Wenyue Hua, Zoey Liu, <u>Kangjie Zheng</u>, Xin Wang, Ping Li.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2020.emnlp-main.167.pdf" target="_blank" rel="noopener">PDF</a>
+          <a class="ml-3 text-gray-500 hover:text-accent" href="https://aclanthology.org/2020.emnlp-main.167/" target="_blank" rel="noopener">ACL Anthology</a>
+        </div>
+      </li>
+
+      <li>
+        <span class="font-semibold">CRISPRminer is a knowledge base for exploring CRISPR-Cas systems in microbe and phage interactions.</span> Communications Biology 2018.
+        <div class="text-gray-700">
+          Fan Zhang, Shijia Zhao, Chunyan Ren, Yuwei Zhu, Haibin Zhou, Yongkui Lai, Fengxia Zhou, Yuqiang Jia, <u>Kangjie Zheng</u>, Zhiwei Huang.
+        </div>
+        <div class="mt-1">
+          <a class="ml-0 text-accent hover:underline" href="https://www.nature.com/articles/s42003-018-0184-6" target="_blank" rel="noopener">Publisher</a>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+
+<!-- Talks -->
+<section id="talks" class="py-20 bg-white">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Talks &amp; Presentations</h2>
+
+    <!-- Top 3 (default visible) -->
+    <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
+      <a
+        href="https://iclr.cc/virtual/2025/poster/29960"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="SMI-Editor at ICLR 2025"
+      >
+        <div class="mono text-xs text-gray-500">2025 · ICLR</div>
+        <div class="mt-1 font-semibold">SMI-Editor Poster · Singapore</div>
+      </a>
+
+      <a
+        href="https://icml.cc/virtual/2024/poster/35119"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="ESM All-Atom at ICML 2024"
+      >
+        <div class="mono text-xs text-gray-500">2024 · ICML</div>
+        <div class="mt-1 font-semibold">ESM-AA Poster · Vienna</div>
+      </a>
+
+      <a
+        href="https://icml.cc/virtual/2024/poster/33340"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="Mol-AE at ICML 2024"
+      >
+        <div class="mono text-xs text-gray-500">2024 · ICML</div>
+        <div class="mt-1 font-semibold">Mol-AE Poster · Vienna</div>
+      </a>
+    </div>
+
+    <!-- More talks (hidden by default) -->
+    <div id="more-talks" class="mt-6 grid md:grid-cols-3 gap-6 text-sm hidden">
+      <a
+        href="https://docs.google.com/presentation/d/1Lf5yCA881qYJgmSGiLYXZRqfGE3gWz_uj9n4O_AbaY8/edit?usp=sharing"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="DualLevT at ICASSP 2023"
+      >
+        <div class="mono text-xs text-gray-500">2023 · ICASSP</div>
+        <div class="mt-1 font-semibold">Dual-LevT Poster · Rhodes</div>
+      </a>
+
+      <a
+        href="https://docs.google.com/presentation/d/1NOSPeVTzzrIupmpBeRmCg7yPhLmlkYuNuRQW8MZir7s/edit?usp=sharing"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="Invited Talk at SAS: Large Models"
+      >
+        <div class="mono text-xs text-gray-500">Invited · SAS</div>
+        <div class="mt-1 font-semibold">The Era of Large Models</div>
+      </a>
+
+      <a
+        href="https://docs.google.com/presentation/d/1Lf5yCA881qYJgmSGiLYXZRqfGE3gWz_uj9n4O_AbaY8/edit?usp=sharing"
+        target="_blank" rel="noopener"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-label="Invited Talk at SAS: Dual Levenshtein Transformer"
+      >
+        <div class="mono text-xs text-gray-500">Invited · SAS</div>
+        <div class="mt-1 font-semibold">Dual Levenshtein Transformer</div>
+      </a>
+    </div>
+
+    <!-- Toggle button -->
+    <div class="mt-6">
+      <button
+        id="toggle-talks"
+        class="rounded-xl border border-black/10 px-4 py-2 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        aria-controls="more-talks" aria-expanded="false"
+      >
+        Show all talks
+      </button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('toggle-talks');
+      const more = document.getElementById('more-talks');
+      if (!btn || !more) return;
+      btn.addEventListener('click', () => {
+        const wasHidden = more.classList.contains('hidden');
+        more.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(wasHidden));
+        btn.textContent = wasHidden ? 'Show fewer' : 'Show all talks';
+      });
+    })();
+  </script>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 bg-gray-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="rounded-2xl border border-black/5 glass p-8 shadow-card">
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900">Contact Me</h2>
+          <p class="mt-2 text-gray-600">Feel free to reach out for collaboration, discussion, or to learn more about me.</p>
+          <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
+            <div>
+              <div class="text-gray-500">Email</div>
+              <a class="hover:text-accent" href="mailto:kangjie.zheng@gmail.com">kangjie.zheng@gmail.com</a>
+            </div>
+            <div>
+              <div class="text-gray-500">Google Scholar</div>
+              <a class="hover:text-accent" href="https://scholar.google.com/citations?hl=en&user=n8kbAwQAAAAJ" target="_blank" rel="noopener">scholar profile</a>
+            </div>
+            <div>
+              <div class="text-gray-500">GitHub</div>
+              <a class="hover:text-accent" href="https://github.com/zhengkangjie" target="_blank" rel="noopener">@zhengkangjie</a>
+            </div>
+          </div>
+        </div>
+        <footer class="mt-10 text-xs text-gray-500">
+          © <span id="year"></span> Kangjie Zheng · Built with GitHub Pages
+        </footer>
+      </div>
+    </section>
+
+    <!-- Theme toggle logic (animated icon + persistence + system sync + gradient fade) -->
+    <script>
+      (function () {
+        const btn = document.getElementById('theme-toggle');
+        const sun = document.getElementById('icon-sun');
+        const moon = document.getElementById('icon-moon');
+        const meta = document.querySelector('meta[name="theme-color"]');
+        const root = document.documentElement;
+
+        // reuse / create one overlay for gradient flash
+        let flash = document.querySelector('.theme-flash');
+        if (!flash) {
+          flash = document.createElement('div');
+          flash.className = 'theme-flash';
+          document.body.appendChild(flash);
+        }
+
+        function setIcon(isDark) {
+          if (!sun || !moon) return;
+          sun.classList.toggle('icon--active', !isDark);
+          sun.classList.toggle('icon--inactive', isDark);
+          moon.classList.toggle('icon--active', isDark);
+          moon.classList.toggle('icon--inactive', !isDark);
+          if (btn) btn.setAttribute('aria-pressed', String(isDark));
+        }
+
+        function playAnim(x, y) {
+          // enable property transitions briefly
+          root.classList.add('theme-anim');
+
+          // position flash center near click/tap or center if unknown
+          if (x != null && y != null) {
+            const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            flash.style.setProperty('--fx', (x / vw * 100).toFixed(2) + '%');
+            flash.style.setProperty('--fy', (y / vh * 100).toFixed(2) + '%');
+          } else {
+            flash.style.removeProperty('--fx');
+            flash.style.removeProperty('--fy');
+          }
+
+          // quick fade in/out
+          requestAnimationFrame(() => {
+            flash.classList.add('show');
+            setTimeout(() => flash.classList.remove('show'), 10); // start fade out immediately
+          });
+
+          // remove transition flag after duration
+          setTimeout(() => root.classList.remove('theme-anim'), 240);
+        }
+
+        function applyTheme(isDark, persist, animate, evt) {
+          if (animate) {
+            const x = evt && (evt.clientX || (evt.touches && evt.touches[0]?.clientX));
+            const y = evt && (evt.clientY || (evt.touches && evt.touches[0]?.clientY));
+            playAnim(x, y);
+          }
+          root.classList.toggle('dark', isDark);
+          if (meta) meta.setAttribute('content', isDark ? '#0b1020' : '#f9fafb');
+          setIcon(isDark);
+          if (persist === true) {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          }
+        }
+
+        // init icon state based on current class
+        setIcon(root.classList.contains('dark'));
+
+        // click toggle with persistence + animated fade
+        if (btn) {
+          // support both mouse and keyboard activation
+          const handler = (e) => {
+            const isDark = !root.classList.contains('dark');
+            applyTheme(isDark, true, true, e);
+          };
+          btn.addEventListener('click', handler);
+          btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(e); }
+          });
+        }
+
+        // follow system if user未手动锁定（带动画，但无点击位置）
+        try {
+          const saved = localStorage.getItem('theme');
+          if (!saved) {
+            const mq = window.matchMedia('(prefers-color-scheme: dark)');
+            mq.addEventListener('change', e => {
+              applyTheme(e.matches, false, true, null);
+            });
+          }
+        } catch (e) {}
+      })();
+
+      // year
+      (function () {
+        const y = document.getElementById('year');
+        if (y) y.textContent = new Date().getFullYear();
+      })();
+    </script>
+  </body>
+</html>
