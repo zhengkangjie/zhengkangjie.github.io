@@ -154,7 +154,7 @@
       }
     </script>
 
-    <!-- Theme init: follow system / saved preference & update theme-color -->
+    <!-- Theme init -->
     <script>
       (function () {
         try {
@@ -198,7 +198,6 @@
         background: linear-gradient(to right, rgba(37,99,235,.0), rgba(37,99,235,.4), rgba(147,51,234,.4), rgba(37,99,235,.0));
         height: 2px;
       }
-      /* 隐藏横向滚动条（用于研究方向条） */
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -248,8 +247,8 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 1rem; /* 16px */
-        height: 1rem; /* 16px */
+        width: 1rem;
+        height: 1rem;
         opacity: 0;
         transform: translate(-50%, -50%) rotate(-90deg) scale(.8);
         transform-origin: 50% 50%;
@@ -258,9 +257,7 @@
       #theme-toggle .icon--active   { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
       #theme-toggle .icon--inactive { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) scale(.8); }
 
-      /* ===================== Fast gradient fade when switching theme ===================== */
       :root { --theme-anim-dur: 200ms; --theme-anim-ease: cubic-bezier(.2,.8,.2,1); }
-      /* Only animate around the moment of switching to avoid perf cost */
       html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
         transition:
           background-color var(--theme-anim-dur) var(--theme-anim-ease),
@@ -273,8 +270,8 @@
       }
       @media (prefers-reduced-motion: reduce) {
         html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
+        #stars { display: none !important; } /* 低动效：关闭星空 */
       }
-      /* flash overlay with radial gradient "wash" */
       .theme-flash {
         position: fixed; inset: 0; pointer-events: none; z-index: 50;
         background: radial-gradient(60vmax 60vmax at var(--fx,50%) var(--fy,50%),
@@ -287,10 +284,23 @@
         background: radial-gradient(60vmax 60vmax at var(--fx,50%) var(--fy,50%),
                     rgba(34,211,238,.12), rgba(124,58,237,.12) 30%, transparent 60%);
       }
+
+      /* ★★ Starfield-only: 画布层 */
+      #stars{
+        position: fixed; inset: 0;
+        pointer-events: none;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity .35s ease;
+      }
+      .dark #stars{ opacity: .9; }
     </style>
   </head>
 
   <body class="grid-bg bg-bg text-gray-800 selection:bg-blue-200 selection:text-gray-900">
+    <!-- ★★ Starfield-only -->
+    <canvas id="stars" aria-hidden="true"></canvas>
+
     <!-- Navigation -->
     <header class="sticky top-0 z-40">
       <div class="mx-auto max-w-6xl px-4">
@@ -346,7 +356,6 @@
             <h1 class="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
                 <span class="relative group inline-block focus:outline-none" tabindex="0">
                     Kangjie Zheng
-                    <!-- Tooltip (shows above, doesn't block mouse) -->
                     <span
                     class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2
                             opacity-0 scale-95 transition
@@ -355,7 +364,6 @@
                     <span class="block rounded-lg bg-black/80 text-white text-xs px-3 py-1 shadow-lg whitespace-nowrap">
                         Pronounced <span class="mono">/kahng-dʒyeh dʒeng/</span>
                     </span>
-                    <!-- 小三角箭头 -->
                     <span class="absolute left-1/2 top-full -translate-x-1/2 w-2 h-2 bg-black/80 rotate-45"></span>
                     </span>
                 </span>
@@ -363,7 +371,6 @@
 
             <h2 class="mt-2 text-lg md:text-xl font-semibold text-accent text-gray-900">Postdoctoral Fellow, Wellcome Sanger Institute</h2>
 
-            <!-- 研究方向条（小屏可横滑，≥sm 限宽） -->
             <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-black/5 bg-black/5 px-3 py-1 text-xs shadow-sm whitespace-nowrap overflow-x-auto no-scrollbar max-w-full">
                 <span class="mono text-accent">AI for Biology</span>
                 <span class="mono text-gray-400">·</span>
@@ -491,7 +498,7 @@
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Research Highlights</h2>
 
     <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <!-- (1) ESM-AA -->
+      <!-- (1) ESM-AA) -->
       <a
         href="https://openreview.net/forum?id=283cGgWfM2"
         target="_blank"
@@ -541,7 +548,7 @@
         href="https://icml.cc/virtual/2025/poster/45731"
         target="_blank"
         rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover;border-accent/40"
         aria-label="Open ExLM ICML 2025 page"
       >
         <h3 class="text-lg font-semibold">Language Model with Enhanced Context (ExLM)</h3>
@@ -644,7 +651,6 @@
         </div>
         <div class="mt-1">
           <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2024.findings-emnlp.677.pdf" target="_blank" rel="noopener">PDF</a>
-          <!--  <a class="ml-3 text-gray-500 hover:text-accent" href="https://aclanthology.org/2024.findings-emnlp.677/" target="_blank" rel="noopener">ACL Anthology</a> -->
           <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/MANGA-UOFA/DAT-LenC" target="_blank" rel="noopener">Code</a>
         </div>
       </li>
@@ -789,7 +795,6 @@
       </a>
     </div>
 
-    <!-- Toggle button -->
     <div class="mt-6">
       <button
         id="toggle-talks"
@@ -844,7 +849,7 @@
       </div>
     </section>
 
-    <!-- Theme toggle logic (animated icon + persistence + system sync + gradient fade) -->
+    <!-- Theme toggle logic + Starfield-only script -->
     <script>
       (function () {
         const btn = document.getElementById('theme-toggle');
@@ -871,10 +876,7 @@
         }
 
         function playAnim(x, y) {
-          // enable property transitions briefly
           root.classList.add('theme-anim');
-
-          // position flash center near click/tap or center if unknown
           if (x != null && y != null) {
             const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
             const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -884,14 +886,10 @@
             flash.style.removeProperty('--fx');
             flash.style.removeProperty('--fy');
           }
-
-          // quick fade in/out
           requestAnimationFrame(() => {
             flash.classList.add('show');
-            setTimeout(() => flash.classList.remove('show'), 10); // start fade out immediately
+            setTimeout(() => flash.classList.remove('show'), 10);
           });
-
-          // remove transition flag after duration
           setTimeout(() => root.classList.remove('theme-anim'), 240);
         }
 
@@ -914,7 +912,6 @@
 
         // click toggle with persistence + animated fade
         if (btn) {
-          // support both mouse and keyboard activation
           const handler = (e) => {
             const isDark = !root.classList.contains('dark');
             applyTheme(isDark, true, true, e);
@@ -941,6 +938,88 @@
       (function () {
         const y = document.getElementById('year');
         if (y) y.textContent = new Date().getFullYear();
+      })();
+
+      /* ============================================================
+         ★★ Starfield-only: 简洁飘动星空（仅深色，亮色暂停）
+      ============================================================ */
+      (function(){
+        const cvs = document.getElementById('stars');
+        if(!cvs) return;
+        const ctx = cvs.getContext('2d', { alpha: true });
+
+        const isDark = () => document.documentElement.classList.contains('dark');
+        const DPR_MAX = 2;
+        const STAR_COUNT = 70;     // 星星数量（可调）
+        const SPEED = 0.25;        // 漂移速度（可调）
+
+        let stars = [], stopped = false;
+
+        function resize(){
+          const dpr = Math.min(window.devicePixelRatio || 1, DPR_MAX);
+          const w = Math.floor(innerWidth  * dpr);
+          const h = Math.floor(innerHeight * dpr);
+          cvs.width  = w;  cvs.height = h;
+          cvs.style.width  = innerWidth + 'px';
+          cvs.style.height = innerHeight + 'px';
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // 用 CSS 像素绘制
+        }
+
+        function spawn(){
+          stars = Array.from({length: STAR_COUNT}, () => ({
+            x: Math.random() * innerWidth,
+            y: Math.random() * innerHeight,
+            r: Math.random() * 1.2 + 0.6,
+            vx: (Math.random() * 2 - 1) * SPEED * 0.3,
+            vy: (Math.random() * 2 - 1) * SPEED * 0.15,
+            tw: Math.random() * Math.PI * 2,
+            tws: 0.015 + Math.random() * 0.02
+          }));
+        }
+
+        function clear(){
+          ctx.clearRect(0, 0, innerWidth, innerHeight);
+        }
+
+        function draw(){
+          if (stopped) return;
+          requestAnimationFrame(draw);
+          if (!isDark()) return;
+
+          clear();
+          for (const s of stars){
+            s.x += s.vx; s.y += s.vy;
+            if (s.x < 0) s.x += innerWidth;
+            if (s.x > innerWidth) s.x -= innerWidth;
+            if (s.y < 0) s.y += innerHeight;
+            if (s.y > innerHeight) s.y -= innerHeight;
+
+            s.tw += s.tws;
+            const a = 0.65 + Math.sin(s.tw) * 0.30;
+
+            ctx.globalAlpha = a;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+        }
+
+        // 主题切换：亮色立即清空，避免残影
+        const mo = new MutationObserver(() => { if (!isDark()) clear(); });
+        mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+        // 初始化
+        resize(); spawn(); draw();
+
+        // 自适应窗口
+        addEventListener('resize', () => { resize(); spawn(); }, { passive: true });
+
+        // 低动效：停用
+        const rmq = matchMedia('(prefers-reduced-motion: reduce)');
+        function handleRM(){ stopped = rmq.matches; if (stopped) clear(); else draw(); }
+        if ('matches' in rmq){ rmq.addEventListener?.('change', handleRM); handleRM(); }
       })();
     </script>
   </body>
