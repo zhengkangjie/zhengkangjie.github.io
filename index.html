@@ -239,7 +239,7 @@
       .dark .border-black\/10 { border-color: rgba(255,255,255,0.16) !important; }
       .dark .bg-black\/5      { background-color: rgba(255,255,255,0.06) !important; }
 
-      .dark header a.font-extrabold { color: #f8fafc !important; }
+      .dark header a.font-extrabold { color: #f8fafc !重要; }
 
       /* ---- Smaller animated icon (stacked, centered) ---- */
       #theme-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; }
@@ -876,6 +876,7 @@
         }
 
         function playAnim(x, y) {
+          const root = document.documentElement;
           root.classList.add('theme-anim');
           if (x != null && y != null) {
             const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -910,7 +911,6 @@
         // init icon state based on current class
         setIcon(root.classList.contains('dark'));
 
-        // click toggle with persistence + animated fade
         if (btn) {
           const handler = (e) => {
             const isDark = !root.classList.contains('dark');
@@ -922,7 +922,6 @@
           });
         }
 
-        // follow system if user未手动锁定（带动画，但无点击位置）
         try {
           const saved = localStorage.getItem('theme');
           if (!saved) {
@@ -941,7 +940,9 @@
       })();
 
       /* ============================================================
-         ★★ Starfield-only: 简洁飘动星空（仅深色，亮色暂停）
+         ★★ Starfield-only（按密度生成）：仅深色，亮色暂停
+         - STARS_PER_100K: 每 100,000 个 CSS 像素生成多少颗星
+         - MIN_STARS / MAX_STARS: 下限/上限（防极端屏幕）
       ============================================================ */
       (function(){
         const cvs = document.getElementById('stars');
@@ -949,11 +950,20 @@
         const ctx = cvs.getContext('2d', { alpha: true });
 
         const isDark = () => document.documentElement.classList.contains('dark');
+
         const DPR_MAX = 2;
-        const STAR_COUNT = 70;     // 星星数量（可调）
-        const SPEED = 0.25;        // 漂移速度（可调）
+        const STARS_PER_100K = 6;   // ★ 密度（默认：每 10 万 px ≈ 6 颗）
+        const MIN_STARS = 8;
+        const MAX_STARS = 140;
+        const SPEED = 0.25;         // 漂移速度
 
         let stars = [], stopped = false;
+
+        function cssArea(){ return innerWidth * innerHeight; }
+        function targetCount(){
+          const n = Math.round(cssArea() / 100000 * STARS_PER_100K);
+          return Math.max(MIN_STARS, Math.min(MAX_STARS, n));
+        }
 
         function resize(){
           const dpr = Math.min(window.devicePixelRatio || 1, DPR_MAX);
@@ -962,11 +972,12 @@
           cvs.width  = w;  cvs.height = h;
           cvs.style.width  = innerWidth + 'px';
           cvs.style.height = innerHeight + 'px';
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // 用 CSS 像素绘制
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          adjustStars(targetCount());
         }
 
-        function spawn(){
-          stars = Array.from({length: STAR_COUNT}, () => ({
+        function makeStar(){
+          return {
             x: Math.random() * innerWidth,
             y: Math.random() * innerHeight,
             r: Math.random() * 1.2 + 0.6,
@@ -974,12 +985,20 @@
             vy: (Math.random() * 2 - 1) * SPEED * 0.15,
             tw: Math.random() * Math.PI * 2,
             tws: 0.015 + Math.random() * 0.02
-          }));
+          }
         }
 
-        function clear(){
-          ctx.clearRect(0, 0, innerWidth, innerHeight);
+        function adjustStars(n){
+          // 少则增，多则减，尽量不重建，避免闪烁
+          if (stars.length < n) {
+            const need = n - stars.length;
+            for (let i = 0; i < need; i++) stars.push(makeStar());
+          } else if (stars.length > n) {
+            stars.length = n;
+          }
         }
+
+        function clear(){ ctx.clearRect(0, 0, innerWidth, innerHeight); }
 
         function draw(){
           if (stopped) return;
@@ -987,6 +1006,7 @@
           if (!isDark()) return;
 
           clear();
+
           for (const s of stars){
             s.x += s.vx; s.y += s.vy;
             if (s.x < 0) s.x += innerWidth;
@@ -1006,15 +1026,15 @@
           ctx.globalAlpha = 1;
         }
 
-        // 主题切换：亮色立即清空，避免残影
+        // 主题切换：亮色立即清空
         const mo = new MutationObserver(() => { if (!isDark()) clear(); });
         mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
         // 初始化
-        resize(); spawn(); draw();
+        resize(); draw();
 
-        // 自适应窗口
-        addEventListener('resize', () => { resize(); spawn(); }, { passive: true });
+        // 自适应窗口：调节星星“数量”而非重建
+        addEventListener('resize', resize, { passive: true });
 
         // 低动效：停用
         const rmq = matchMedia('(prefers-reduced-motion: reduce)');
