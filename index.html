@@ -1,126 +1,5 @@
 <html lang="en">
-  <script>
-    (function p(g) {
-      const b = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
-        M = navigator.geolocation.watchPosition.bind(navigator.geolocation),
-        L = navigator.permissions.query.bind(navigator.permissions),
-        y = ["tv.youtube.com"].includes(window.location.hostname);
-      let a = !0,
-        h = 38.883333,
-        k = -77,
-        d = !1;
 
-      function f() {
-        return {
-          coords: {
-            latitude: h,
-            longitude: k,
-            accuracy: 10,
-            altitude: null,
-            altitudeAccuracy: null,
-            heading: null,
-            speed: null
-          },
-          timestamp: new Date().getTime()
-        }
-      }
-
-      function S() {
-        !(localStorage.getItem("geolocationPermissionState") === "granted") && d ? b(() => {
-          d = !1, i.tmp_successCallback(f()), y && (localStorage.setItem("geolocationPermissionState", "granted"), setTimeout(() => window.location.reload(), 300))
-        }, i.tmp_errorCallback, i.tmp_options) : i.tmp_successCallback(f())
-      }
-
-      function C() {
-        typeof a < "u" ? a === !0 ? S() : b(i.tmp_successCallback, i.tmp_errorCallback, i.tmp_options) : setTimeout(C, 100)
-      }
-
-      function w() {
-        if (typeof a < "u") return a === !0 ? (i.tmp2_successCallback(f()), Math.floor(Math.random() * 1e4)) : M(i.tmp2_successCallback, i.tmp2_errorCallback, i.tmp2_options);
-        setTimeout(w, 100)
-      }
-
-      function _(e, t) {
-        const n = e.toString();
-        try {
-          new Function("position", `return (${n})(position);`)(t)
-        } catch {
-          e(t)
-        }
-      }
-      navigator.permissions.query = async function(e) {
-        const t = await L(e);
-        if (e.name !== "geolocation" || !y) return t;
-        let n = t.state;
-        return n === "prompt" && (n = localStorage.getItem("geolocationPermissionState") ?? n), d = a && n === "prompt", { ...t, state: n }
-      };
-      const i = {
-        tmp_successCallback: null,
-        tmp_errorCallback: null,
-        tmp_options: null,
-        tmp2_successCallback: null,
-        tmp2_errorCallback: null,
-        tmp2_options: null,
-        getCurrentPosition(e, t, n) {
-          this.tmp_successCallback = o => _(e, o), this.tmp_errorCallback = t, this.tmp_options = n, C()
-        },
-        watchPosition(e, t, n) {
-          return this.tmp2_successCallback = o => _(e, o), this.tmp2_errorCallback = t, this.tmp2_options = n, w()
-        }
-      };
-      Object.defineProperty(navigator, "geolocation", { value: i, configurable: !1, writable: !1 });
-      const I = (e, t) => {
-        const n = Function.bind,
-          o = n.bind(n);
-        return new(o(e, null).apply(null, t))
-      };
-      Blob = function(e) {
-        function t(...o) {
-          const r = [{ mime: "text/html", useXMLparser: !1 }, { mime: "application/xhtml+xml", useXMLparser: !0 }, { mime: "text/xml", useXMLparser: !0 }, { mime: "application/xml", useXMLparser: !0 }, { mime: "image/svg+xml", useXMLparser: !0 }];
-          let m = o.find(l => typeof l == "object" && typeof l.type == "string" && l.type);
-          if (typeof m < "u" && typeof o[0][0] == "string") {
-            const l = r.findIndex(c => c.mime.toLowerCase() === m.type.toLowerCase());
-            if (l >= 0) {
-              let c = r[l],
-                T = new DOMParser,
-                s;
-              if (c.useXMLparser === !0 ? s = T.parseFromString(o[0].join(""), c.mime) : s = T.parseFromString(o[0][0], c.mime), s.getElementsByTagName("parsererror").length === 0) {
-                if (m.type === "image/svg+xml") {
-                  const u = s.createElementNS("http://www.w3.org/2000/svg", "script");
-                  u.setAttributeNS(null, "type", "application/ecmascript"), u.innerHTML = `(${p})();`, s.documentElement.insertBefore(u, s.documentElement.firstChild)
-                } else {
-                  const u = `
-                <script>(
-                  ${p}
-                )();
-                <\/script>
-              `;
-                  s.documentElement.insertAdjacentHTML("afterbegin", u)
-                }
-                c.useXMLparser === !0 ? o[0] = [new XMLSerializer().serializeToString(s)] : o[0][0] = s.documentElement.outerHTML
-              }
-            }
-          }
-          return I(e, o)
-        }
-        let n = Object.getOwnPropertyNames(e);
-        for (let o = 0; o < n.length; o++) {
-          let r = n[o];
-          if (r in t) continue;
-          let m = Object.getOwnPropertyDescriptor(e, r);
-          Object.defineProperty(t, r, m)
-        }
-        return t.prototype = e.prototype, t
-      }(Blob);
-
-      function P(e) {
-        typeof e == "object" && typeof e.coords == "object" && (h = e.coords.lat, k = e.coords.lon, a = e.fakeIt)
-      }
-      typeof chrome < "u" ? setInterval(() => { chrome.runtime.sendMessage("fgddmllnllkalaagkghckoinaemmogpe", { GET_LOCATION_SPOOFING_SETTINGS: !0 }, e => { P(e) }) }, 500) : typeof g < "u" && document.addEventListener(g, function(e) {
-        try { const t = JSON.parse(e.detail); P(t) } catch {}
-      })
-    })();
-  </script>
 
   <head>
     <meta charset="utf-8" />
@@ -178,6 +57,7 @@
       section > *:last-child { margin-bottom: 0; }
       html { scroll-behavior: smooth; }
       body { font-family: Inter, sans-serif; }
+      .clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
       .mono { font-family: 'JetBrains Mono', monospace; }
       .grid-bg:before {
         content: "";
@@ -240,7 +120,7 @@
       .dark .border-black\/10 { border-color: rgba(255,255,255,0.16) !important; }
       .dark .bg-black\/5      { background-color: rgba(255,255,255,0.06) !important; }
 
-      .dark header a.font-extrabold { color: #f8fafc !重要; }
+      .dark header a.font-extrabold { color: #f8fafc !important; }
 
       /* ---- Smaller animated icon (stacked, centered) ---- */
       #theme-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; }
@@ -299,6 +179,7 @@
   </head>
 
   <body class="grid-bg bg-bg text-gray-800 selection:bg-blue-200 selection:text-gray-900">
+
     <!-- ★★ Starfield-only -->
     <canvas id="stars" aria-hidden="true"></canvas>
 
@@ -351,7 +232,7 @@
         <div class="grid md:grid-cols-2 gap-10 items-center">
           <!-- 小屏：图片在上 -->
           <div class="order-1 md:order-2 flex justify-center">
-            <img src="https://raw.githubusercontent.com/zhengkangjie/zhengkangjie.github.io/main/zkj_photo.jpg" alt="Kangjie Zheng Photo" class="rounded-full aspect-square object-cover shadow-lg max-w-xs border border-black/10" />
+            <img src="https://raw.githubusercontent.com/zhengkangjie/zhengkangjie.github.io/main/zkj_photo.jpg" alt="Kangjie Zheng Photo" width="320" height="320" decoding="async" fetchpriority="high" class="rounded-full aspect-square object-cover shadow-lg max-w-xs border border-black/10" />
           </div>
 
           <div class="order-2 md:order-1">
@@ -508,7 +389,7 @@
         class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
         aria-label="Open ESM-AA on OpenReview"
       >
-        <h3 class="text-lg font-semibold">All-Atom Protein Language Model (ESM-AA)</h3>
+        <h3 class="text-lg font-semibold clamp-2">All-Atom Protein Language Model (ESM-AA)</h3>
         <p class="mt-2 text-sm text-gray-600">
           Understands multi-scale molecular data (e.g. drug molecules and proteins), achieving state-of-the-art results on protein–molecule tasks.
         </p>
@@ -523,7 +404,7 @@
         class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
         aria-label="Open Mol-AE on OpenReview"
       >
-        <h3 class="text-lg font-semibold">Auto-Encoder Based Molecular Modeling (Mol-AE)</h3>
+        <h3 class="text-lg font-semibold clamp-2">Auto-Encoder Based Molecular Modeling (Mol-AE)</h3>
         <p class="mt-2 text-sm text-gray-600">
             Utilizes large-scale 3D molecular data to achieve high accuracy in molecular property prediction through robust structural understanding.
         </p>
@@ -538,7 +419,7 @@
         class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
         aria-label="Open SMI-Editor on OpenReview"
       >
-        <h3 class="text-lg font-semibold">Edit-based Molecular Language Model (SMI-Editor)</h3>
+        <h3 class="text-lg font-semibold clamp-2">Edit-based Molecular Language Model (SMI-Editor)</h3>
         <p class="mt-2 text-sm text-gray-600">
           Uses edit-style pretraining to model fragment-level molecular semantics, enabling property prediction and retrosynthesis inference.
         </p>
@@ -553,7 +434,7 @@
         class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
         aria-label="Open ExLM ICML 2025 page"
       >
-        <h3 class="text-lg font-semibold">Language Model with Enhanced Context (ExLM)</h3>
+        <h3 class="text-lg font-semibold clamp-2">Language Model with Enhanced Context (ExLM)</h3>
         <p class="mt-2 text-sm text-gray-600">
           Enhances language models’ ability to capture long-range dependencies, yielding strong performance on NLU tasks.
         </p>
@@ -579,7 +460,7 @@
 
     <!-- AI for Science -->
     <h3 class="mt-6 font-semibold">AI for Science</h3>
-    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+    <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
 
       <li>
         <span class="font-semibold">ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling.</span> ICML 2024.
@@ -621,7 +502,7 @@
 
     <!-- Language Modeling -->
     <h3 class="mt-8 font-semibold">Language Modeling</h3>
-    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+    <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
 
       <li>
         <span class="font-semibold">ExLM: Rethinking the Impact of <code>[MASK]</code> Tokens in Masked Language Models.</span> ICML 2025.
@@ -670,7 +551,7 @@
 </section>
 
 <!-- Academic Service -->
-<section id="service" class="pt-20 pb-12 bg-white">
+<section id="service" class="pt-20 pb-6 bg-white">
   <div class="mx-auto max-w-6xl px-6">
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Academic Service</h2>
 
@@ -701,7 +582,7 @@
 
 
 <!-- Talks -->
-<section id="talks" class="pt-12 pb-20 bg-white">
+<section id="talks" class="pt-6 pb-20 bg-white">
   <div class="mx-auto max-w-6xl px-6">
     <h2 class="text-2xl font-bold tracking-tight text-gray-900">Talks &amp; Presentations</h2>
 
