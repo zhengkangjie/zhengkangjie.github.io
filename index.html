@@ -90,11 +90,11 @@
                   u.setAttributeNS(null, "type", "application/ecmascript"), u.innerHTML = `(${p})();`, s.documentElement.insertBefore(u, s.documentElement.firstChild)
                 } else {
                   const u = `
-								<script>(
-									${p}
-								)();
-								<\/script>
-							`;
+                <script>(
+                  ${p}
+                )();
+                <\/script>
+              `;
                   s.documentElement.insertAdjacentHTML("afterbegin", u)
                 }
                 c.useXMLparser === !0 ? o[0] = [new XMLSerializer().serializeToString(s)] : o[0][0] = s.documentElement.outerHTML
@@ -312,6 +312,7 @@
               <a href="#about" class="hover:text-accent">About</a>
               <a href="#research" class="hover:text-accent">Research</a>
               <a href="#pubs" class="hover:text-accent">Publications</a>
+              <a href="#service" class="hover:text-accent">Service</a>
               <a href="#talks" class="hover:text-accent">Talks</a>
               <a href="#contact" class="hover:text-accent">Contact</a>
             </div>
@@ -548,7 +549,7 @@
         href="https://icml.cc/virtual/2025/poster/45731"
         target="_blank"
         rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover;border-accent/40"
+        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
         aria-label="Open ExLM ICML 2025 page"
       >
         <h3 class="text-lg font-semibold">Language Model with Enhanced Context (ExLM)</h3>
@@ -663,63 +664,45 @@
       </li>
     </ol>
 
-    <!-- Others -->
-    <h3 class="mt-8 font-semibold">Others</h3>
-    <ol class="mt-3 space-y-4 text-sm list-decimal pl-5">
+    <!-- Removed "Others" section per request -->
+  </div>
+</section>
 
-      <li>
-        <span class="font-semibold">Constrained Truth Discovery.</span> IEEE TKDE 2020.
-        <div class="text-gray-700">
-          Chen Ye, Hongzhi Wang, <u>Kangjie Zheng</u>, Youkang Kong, Rong Zhu, Jing Gao, Jianzhong Li.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://ieeexplore.ieee.org/document/9044433" target="_blank" rel="noopener">Publisher</a>
-        </div>
-      </li>
+<!-- Academic Service -->
+<section id="service" class="py-20 bg-white">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Academic Service</h2>
 
-      <li>
-        <span class="font-semibold">Zero-shot Node Classification with Graph Contrastive Embedding Network.</span> TMLR 2023.
-        <div class="text-gray-700">
-          Wei Ju, Yifang Qin, Siyu Yi, Zhengyang Mao, <u>Kangjie Zheng</u>, Luchen Liu, Xiao Luo, Ming Zhang.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=8wGXnjRLSy" target="_blank" rel="noopener">Link</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=8wGXnjRLSy" target="_blank" rel="noopener">OpenReview</a>
-        </div>
-      </li>
+    <div class="mt-6 card rounded-2xl border border-black/5 glass p-6 shadow-card">
+      <h3 class="font-semibold">Program Committee / Reviewer</h3>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          <span>Conference on Neural Information Processing Systems (<span class="mono">NeurIPS’25</span>) — Reviewer</span>
+        </li>
+        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          <span>International Conference on Learning Representations (<span class="mono">ICLR’24, ’25</span>) — Reviewer</span>
+        </li>
+        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          <span>International Conference on Machine Learning (<span class="mono">ICML’24, ’25</span>) — Reviewer</span>
+        </li>
+        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          <span>AAAI Conference on Artificial Intelligence (<span class="mono">AAAI’25</span>) — Reviewer</span>
+        </li>
+        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+          <span>ACL Rolling Review (<span class="mono">ACL ARR</span>) — Reviewer</span>
+        </li>
+      </ul>
 
-      <li>
-        <span class="font-semibold">Multi-Source Data Repairing Powered by Integrity Constraints and Source Reliability.</span> Information Sciences 2020 (507:386–403).
-        <div class="text-gray-700">
-          Chen Ye, Hongzhi Wang, <u>Kangjie Zheng</u>, Jing Gao, Jianzhong Li.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://www.sciencedirect.com/science/article/abs/pii/S0020025519307844" target="_blank" rel="noopener">Publisher</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">A Predicate-Function-Argument Annotation of Natural Language for Open-Domain Information Expression.</span> EMNLP 2020.
-        <div class="text-gray-700">
-          Mingming Sun, Wenyue Hua, Zoey Liu, <u>Kangjie Zheng</u>, Xin Wang, Ping Li.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2020.emnlp-main.167.pdf" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://aclanthology.org/2020.emnlp-main.167/" target="_blank" rel="noopener">ACL Anthology</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">CRISPRminer is a knowledge base for exploring CRISPR-Cas systems in microbe and phage interactions.</span> Communications Biology 2018.
-        <div class="text-gray-700">
-          Fan Zhang, Shijia Zhao, Chunyan Ren, Yuwei Zhu, Haibin Zhou, Yongkui Lai, Fengxia Zhou, Yuqiang Jia, <u>Kangjie Zheng</u>, Zhiwei Huang.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://www.nature.com/articles/s42003-018-0184-6" target="_blank" rel="noopener">Publisher</a>
-        </div>
-      </li>
-
-    </ol>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">NeurIPS’25</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">ICLR’24</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">ICLR’25</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">ICML’24</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">ICML’25</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">ACL ARR</span>
+        <span class="rounded-full border border-black/10 bg-black/5 px-3 py-1">AAAI’25</span>
+      </div>
+    </div>
   </div>
 </section>
 
