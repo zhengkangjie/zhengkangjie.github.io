@@ -1,6 +1,5 @@
+<!doctype html>
 <html lang="en">
-
-
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,7 +49,7 @@
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
     <style>
@@ -81,6 +80,11 @@
       }
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* ANCHOR OFFSET & DIVIDER */
+      .anchor-offset { scroll-margin-top: 96px; }
+      .subtle-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(0,0,0,.08), transparent); }
+      .dark .subtle-divider { background: linear-gradient(to right, transparent, rgba(255,255,255,.12), transparent); }
 
       /* ===================== Dark mode overrides (colors only) ===================== */
       .dark body { background-color: #0b1020; color: #e2e8f0; }
@@ -151,7 +155,7 @@
       }
       @media (prefers-reduced-motion: reduce) {
         html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
-        #stars { display: none !important; } /* 低动效：关闭星空 */
+        #stars { display: none !important; }
       }
       .theme-flash {
         position: fixed; inset: 0; pointer-events: none; z-index: 50;
@@ -287,372 +291,413 @@
 
     <!-- About -->
     <section id="about" class="py-20 bg-gray-50">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">About Me</h2>
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">About Me</h2>
 
-    <p class="mt-4 text-gray-600">
-        I am a Postdoctoral Researcher at the Wellcome Sanger Institute in Cambridge, UK, working with <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="text-accent hover:underline">Dr. Mo Lotfollahi</a> on developing scalable, generalizable foundation models for large-scale biological data. My work spans sequence modeling (proteins, genomes) and structural modeling (3D molecular structures), with the goal of advancing integrative understanding across biological modalities.
-    </p>
+        <p class="mt-4 text-gray-600">
+            I am a Postdoctoral Researcher at the Wellcome Sanger Institute in Cambridge, UK, working with <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="text-accent hover:underline">Dr. Mo Lotfollahi</a> on developing scalable, generalizable foundation models for large-scale biological data. My work spans sequence modeling (proteins, genomes) and structural modeling (3D molecular structures), with the goal of advancing integrative understanding across biological modalities.
+        </p>
 
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <!-- Research Experience -->
+          <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
+            <h3 class="font-semibold">Academic Background</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li>
+                <strong>Postdoctoral Fellow</strong>, Wellcome Sanger Institute
+                <span class="text-gray-600">(Sep 2025 – Present)</span>
+                <div class="text-gray-600">Mentor: <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="hover:text-accent">
+                    Dr. Mo Lotfollahi 
+                  </a>
+                </div>
+              </li>
+              <li>
+                <strong>Ph.D. in Computer Science</strong>, Peking University
+                <span class="text-gray-600">(Aug 2020 – Jun 2025)</span>
+                <div class="text-gray-600">
+                  Supervisor:
+                  <a href="https://cs.pku.edu.cn/info/1238/2063.htm" target="_blank" rel="noopener" class="hover:text-accent">
+                    Prof. Ming Zhang
+                  </a>
+                </div>
+              </li>
+              <li>
+                <strong>B.Eng. in Computer Science</strong>, Harbin Institute of Technology
+                <span class="text-gray-600">(Aug 2016 – Jun 2020)</span>
+                <div class="text-gray-600">
+                  College: The Honors School of HIT (<strong>Top 10 graduates</strong>)
+                </div>
+              </li>
+            </ul>
+          </div>
 
-    <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <!-- Research Experience -->
-      <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
-        <h3 class="font-semibold">Academic Background</h3>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li>
-            <strong>Postdoctoral Fellow</strong>, Wellcome Sanger Institute
-            <span class="text-gray-600">(Sep 2025 – Present)</span>
-            <div class="text-gray-600">Mentor: <a href="https://www.sanger.ac.uk/external_person/lotfollahi-mo/" target="_blank" rel="noopener" class="hover:text-accent">
-                Dr. Mo Lotfollahi 
-              </a>
-          </li>
-          <li>
-            <strong>Ph.D. in Computer Science</strong>, Peking University
-            <span class="text-gray-600">(Aug 2020 – Jun 2025)</span>
-            <div class="text-gray-600">
-              Supervisor:
-              <a href="https://cs.pku.edu.cn/info/1238/2063.htm" target="_blank" rel="noopener" class="hover:text-accent">
-                Prof. Ming Zhang
-              </a>
-            </div>
-          </li>
-          <li>
-            <strong>B.Eng. in Computer Science</strong>, Harbin Institute of Technology
-            <span class="text-gray-600">(Aug 2016 – Jun 2020)</span>
-            <div class="text-gray-600">
-              College: The Honors School of HIT (<strong>Top 10 graduates</strong>)
-            </div>
-          </li>
-        </ul>
+          <!-- Internships -->
+          <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
+            <h3 class="font-semibold">Industry Experience</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li>
+                <strong>Research Intern</strong>, AIR in Tsinghua University
+                <span class="text-gray-600">(Aug 2022 – Nov 2024)</span>
+                <div class="text-gray-600">
+                  Mentors:
+                  <a href="https://air.tsinghua.edu.cn/en/info/1046/1189.htm" target="_blank" rel="noopener" class="hover:text-accent">
+                    Prof. Wei-Ying Ma
+                  </a>,
+                  <a href="https://zhouh.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
+                    Prof. Hao Zhou
+                  </a>
+                </div>
+              </li>
+              <li>
+                <strong>Research Intern</strong>, Tencent AI Lab
+                <span class="text-gray-600">(Aug 2021 – Aug 2022)</span>
+                <div class="text-gray-600">
+                  Mentors:
+                  <a href="https://longyuewang.com/" target="_blank" rel="noopener" class="hover:text-accent">
+                    Dr. Longyue Wang
+                  </a>,
+                  <a href="https://tuzhaopeng.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
+                    Dr. Zhaopeng Tu
+                  </a>
+                </div>
+              </li>
+              <li>
+                <strong>Research Intern</strong>, Baidu Research
+                <span class="text-gray-600">(Aug 2019 – May 2020)</span>
+                <div class="text-gray-600">
+                  Mentor:
+                  <a href="https://www.bimsa.cn/detail/MingmingSun.html" target="_blank" rel="noopener" class="hover:text-accent">
+                    Dr. Mingming Sun
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <!-- Internships -->
-      <div class="card rounded-2xl border border-black/5 glass p-6 shadow-card">
-        <h3 class="font-semibold">Industry Experience</h3>
-        <ul class="mt-3 space-y-2 text-sm">
+    <!-- Research -->
+    <section id="research" class="py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Research Highlights</h2>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <!-- (1) ESM-AA) -->
+          <a
+            href="https://openreview.net/forum?id=283cGgWfM2"
+            target="_blank"
+            rel="noopener"
+            class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+            aria-label="Open ESM-AA on OpenReview"
+          >
+            <h3 class="text-lg font-semibold clamp-2">All-Atom Protein Language Model (ESM-AA)</h3>
+            <p class="mt-2 text-sm text-gray-600">
+              Understands multi-scale molecular data (e.g. drug molecules and proteins), achieving state-of-the-art results on protein–molecule tasks.
+            </p>
+            <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
+          </a>
+
+          <!-- (2) Mol-AE -->
+          <a
+            href="https://openreview.net/forum?id=inEuvSg0y1"
+            target="_blank"
+            rel="noopener"
+            class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+            aria-label="Open Mol-AE on OpenReview"
+          >
+            <h3 class="text-lg font-semibold clamp-2">Auto-Encoder Based Molecular Modeling (Mol-AE)</h3>
+            <p class="mt-2 text-sm text-gray-600">
+                Utilizes large-scale 3D molecular data to achieve high accuracy in molecular property prediction through robust structural understanding.
+            </p>
+            <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
+          </a>
+
+          <!-- (3) SMI-Editor -->
+          <a
+            href="https://openreview.net/forum?id=M29nUGozPa"
+            target="_blank"
+            rel="noopener"
+            class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+            aria-label="Open SMI-Editor on OpenReview"
+          >
+            <h3 class="text-lg font-semibold clamp-2">Edit-based Molecular Language Model (SMI-Editor)</h3>
+            <p class="mt-2 text-sm text-gray-600">
+              Uses edit-style pretraining to model fragment-level molecular semantics, enabling property prediction and retrosynthesis inference.
+            </p>
+            <div class="mt-3 text-xs mono text-gray-500">ICLR 2025</div>
+          </a>
+
+          <!-- (4) ExLM -->
+          <a
+            href="https://icml.cc/virtual/2025/poster/45731"
+            target="_blank"
+            rel="noopener"
+            class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
+            aria-label="Open ExLM ICML 2025 page"
+          >
+            <h3 class="text-lg font-semibold clamp-2">Language Model with Enhanced Context (ExLM)</h3>
+            <p class="mt-2 text-sm text-gray-600">
+              Enhances language models’ ability to capture long-range dependencies, yielding strong performance on NLU tasks.
+            </p>
+            <div class="mt-3 text-xs mono text-gray-500">ICML 2025</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="pubs" class="py-20 bg-gray-50">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Selected Publications</h2>
+        <div class="mt-2 text-xs text-gray-500">
+            * equal contribution · See a full list of papers on 
+            <a class="text-accent hover:underline"
+                href="https://scholar.google.com/citations?hl=en&user=n8kbAwQAAAAJ"
+                target="_blank" rel="noopener noreferrer">
+                Google Scholar
+            </a>.
+        </div>
+
+        <!-- AI for Science -->
+        <h3 class="mt-6 font-semibold">AI for Science</h3>
+        <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
+
           <li>
-            <strong>Research Intern</strong>, AIR in Tsinghua University
-            <span class="text-gray-600">(Aug 2022 – Nov 2024)</span>
-            <div class="text-gray-600">
-              Mentors:
-              <a href="https://air.tsinghua.edu.cn/en/info/1046/1189.htm" target="_blank" rel="noopener" class="hover:text-accent">
-                Prof. Wei-Ying Ma
-              </a>,
-              <a href="https://zhouh.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
-                Prof. Hao Zhou
-              </a>
+            <span class="font-semibold">ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling.</span> ICML 2024.
+            <div class="text-gray-700">
+              <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long<sup>*</sup>, Tianyu Lu, Junwei Yang, Xinyu Dai, Ming Zhang, Zaiqing Nie, Wei-Ying Ma, Hao Zhou.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=283cGgWfM2" target="_blank" rel="noopener">PDF</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=283cGgWfM2" target="_blank" rel="noopener">OpenReview</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/ESM-AA" target="_blank" rel="noopener">Code</a>
             </div>
           </li>
+
           <li>
-            <strong>Research Intern</strong>, Tencent AI Lab
-            <span class="text-gray-600">(Aug 2021 – Aug 2022)</span>
-            <div class="text-gray-600">
-              Mentors:
-              <a href="https://longyuewang.com/" target="_blank" rel="noopener" class="hover:text-accent">
-                Dr. Longyue Wang
-              </a>,
-              <a href="https://tuzhaopeng.github.io/" target="_blank" rel="noopener" class="hover:text-accent">
-                Dr. Zhaopeng Tu
-              </a>
+            <span class="font-semibold">SMI-Editor: Edit-based SMILES Language Model with Fragment-level Supervision.</span> ICLR 2025.
+            <div class="text-gray-700">
+              <u>Kangjie Zheng</u>, Siyue Liang, Junwei Yang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=M29nUGozPa" target="_blank" rel="noopener">PDF</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=M29nUGozPa" target="_blank" rel="noopener">OpenReview</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/smi-editor" target="_blank" rel="noopener">Code</a>
             </div>
           </li>
+
           <li>
-            <strong>Research Intern</strong>, Baidu Research
-            <span class="text-gray-600">(Aug 2019 – May 2020)</span>
-            <div class="text-gray-600">
-              Mentor:
-              <a href="https://www.bimsa.cn/detail/MingmingSun.html" target="_blank" rel="noopener" class="hover:text-accent">
-                Dr. Mingming Sun
-              </a>
+            <span class="font-semibold">Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective.</span> ICML 2024.
+            <div class="text-gray-700">
+              Junwei Yang<sup>*</sup>, <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long, Zaiqing Nie, Ming Zhang, Xinyu Dai, Wei-Ying Ma, Hao Zhou.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=inEuvSg0y1" target="_blank" rel="noopener">PDF</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=inEuvSg0y1" target="_blank" rel="noopener">OpenReview</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/yjwtheonly/MolAE" target="_blank" rel="noopener">Code</a>
             </div>
           </li>
-        </ul>
+
+        </ol>
+
+        <!-- Language Modeling -->
+        <h3 class="mt-8 font-semibold">Language Modeling</h3>
+        <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
+
+          <li>
+            <span class="font-semibold">ExLM: Rethinking the Impact of <code>[MASK]</code> Tokens in Masked Language Models.</span> ICML 2025.
+            <div class="text-gray-700">
+              <u>Kangjie Zheng</u>, Junwei Yang, Siyue Liang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://arxiv.org/pdf/2501.13397.pdf" target="_blank" rel="noopener">PDF</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=IYOPfJwduh" target="_blank" rel="noopener">OpenReview</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/ExLM" target="_blank" rel="noopener">Code</a>
+            </div>
+          </li>
+
+          <li>
+            <span class="font-semibold">Towards A Unified Training for Levenshtein Transformer.</span> ICASSP 2023.
+            <div class="text-gray-700">
+              <u>Kangjie Zheng</u>, Longyue Wang, Zhihao Wang, Binqi Chen, Ming Zhang, Zhaopeng Tu.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://ieeexplore.ieee.org/abstract/document/10094646" target="_blank" rel="noopener">Publisher</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/fairseq-dual-loss" target="_blank" rel="noopener">Code</a>
+            </div>
+          </li>
+
+          <li>
+            <span class="font-semibold">A Decoding Algorithm Based on Directed Acyclic Transformers for Length-Control Summarization.</span> EMNLP Findings 2024.
+            <div class="text-gray-700">
+              Chenyang Huang, Hao Zhou, Cameron Jen, <u>Kangjie Zheng</u>, Osmar Zaiane, Lili Mou.
+            </div>
+            <div class="mt-1">
+              <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2024.findings-emnlp.677.pdf" target="_blank" rel="noopener">PDF</a>
+              <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/MANGA-UOFA/DAT-LenC" target="_blank" rel="noopener">Code</a>
+            </div>
+          </li>
+
+          <li>
+            <span class="font-semibold">Gloss Matters: Unlocking the Potential of Non-Autoregressive Sign Language Translation.</span> ACM MM 2025.
+            <div class="text-gray-700">
+              Zhihao Wang, Shiyu Liu, Zhiwei He, <u>Kangjie Zheng</u>, Liangying Shao, Junfeng Yao, Jinsong Su.
+            </div>
+          </li>
+        </ol>
+
+        <!-- Removed "Others" section per request -->
+      </div>
+    </section>
+
+    <!-- ========================
+         Community Contributions (Service + Talks)
+         ======================== -->
+    <section id="contrib" class="py-20 bg-white">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Community Contributions</h2>
+
+        <!-- Two-column layout: Service (left) · Talks (right) -->
+        <div class="mt-8 grid md:grid-cols-2 gap-8 items-start">
+
+          <!-- Academic Service -->
+          <div>
+            <div id="service" class="anchor-offset"></div>
+            <h3 class="text-lg font-semibold text-gray-900">Academic Service</h3>
+            <div class="mt-4 card rounded-2xl border border-black/5 glass p-6 shadow-card">
+              <h4 class="font-semibold">Program Committee / Reviewer</h4>
+              <ul class="mt-3 space-y-2 text-sm">
+                <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  <span>Conference on Neural Information Processing Systems (<span class="mono">NeurIPS’25</span>) — Reviewer</span>
+                </li>
+                <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  <span>International Conference on Learning Representations (<span class="mono">ICLR’24, ’25</span>) — Reviewer</span>
+                </li>
+                <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  <span>International Conference on Machine Learning (<span class="mono">ICML’24, ’25</span>) — Reviewer</span>
+                </li>
+                <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  <span>AAAI Conference on Artificial Intelligence (<span class="mono">AAAI’25</span>) — Reviewer</span>
+                </li>
+                <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
+                  <span>ACL Rolling Review (<span class="mono">ACL ARR</span>) — Reviewer</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+  <!-- Talks & Presentations -->
+<div>
+    <div id="talks" class="anchor-offset"></div>
+    <h3 class="text-lg font-semibold text-gray-900">Talks &amp; Presentations</h3>
+  
+    <!-- Top 3 -->
+    <div class="mt-4 grid md:grid-cols-1 gap-6 text-sm">
+      <div class="grid sm:grid-cols-3 gap-6">
+  
+        <!-- SMI-Editor (ICLR 2025) -->
+        <a
+          href="https://iclr.cc/virtual/2025/poster/29960"
+          target="_blank" rel="noopener"
+          class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
+          aria-label="SMI-Editor at ICLR 2025"
+        >
+          <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+            <span class="mono">2025</span><span>·</span><span class="mono">ICLR</span>
+            <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Poster</span>
+          </div>
+          <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">SMI-Editor</div>
+          <div class="mt-1 text-[11px] text-gray-500">Singapore</div>
+        </a>
+  
+        <!-- ESM-AA (ICML 2024) -->
+        <a
+          href="https://icml.cc/virtual/2024/poster/35119"
+          target="_blank" rel="noopener"
+          class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
+          aria-label="ESM All-Atom at ICML 2024"
+        >
+          <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+            <span class="mono">2024</span><span>·</span><span class="mono">ICML</span>
+            <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Poster</span>
+          </div>
+          <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">ESM-AA</div>
+          <div class="mt-1 text-[11px] text-gray-500">Vienna, Austria</div>
+        </a>
+  
+        <!-- Mol-AE (ICML 2024) -->
+        <a
+          href="https://icml.cc/virtual/2024/poster/33340"
+          target="_blank" rel="noopener"
+          class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
+          aria-label="Mol-AE at ICML 2024"
+        >
+          <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+            <span class="mono">2024</span><span>·</span><span class="mono">ICML</span>
+            <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Poster</span>
+          </div>
+          <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">Mol-AE</div>
+          <div class="mt-1 text-[11px] text-gray-500">Vienna, Austria</div>
+        </a>
+  
       </div>
     </div>
-  </div>
-</section>
-
-
-
-<!-- Research -->
-<section id="research" class="py-20 bg-white">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Research Highlights</h2>
-
-    <div class="mt-8 grid md:grid-cols-2 gap-6">
-      <!-- (1) ESM-AA) -->
-      <a
-        href="https://openreview.net/forum?id=283cGgWfM2"
-        target="_blank"
-        rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
-        aria-label="Open ESM-AA on OpenReview"
-      >
-        <h3 class="text-lg font-semibold clamp-2">All-Atom Protein Language Model (ESM-AA)</h3>
-        <p class="mt-2 text-sm text-gray-600">
-          Understands multi-scale molecular data (e.g. drug molecules and proteins), achieving state-of-the-art results on protein–molecule tasks.
-        </p>
-        <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
-      </a>
-
-      <!-- (2) Mol-AE -->
-      <a
-        href="https://openreview.net/forum?id=inEuvSg0y1"
-        target="_blank"
-        rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
-        aria-label="Open Mol-AE on OpenReview"
-      >
-        <h3 class="text-lg font-semibold clamp-2">Auto-Encoder Based Molecular Modeling (Mol-AE)</h3>
-        <p class="mt-2 text-sm text-gray-600">
-            Utilizes large-scale 3D molecular data to achieve high accuracy in molecular property prediction through robust structural understanding.
-        </p>
-        <div class="mt-3 text-xs mono text-gray-500">ICML 2024</div>
-      </a>
-
-      <!-- (3) SMI-Editor -->
-      <a
-        href="https://openreview.net/forum?id=M29nUGozPa"
-        target="_blank"
-        rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
-        aria-label="Open SMI-Editor on OpenReview"
-      >
-        <h3 class="text-lg font-semibold clamp-2">Edit-based Molecular Language Model (SMI-Editor)</h3>
-        <p class="mt-2 text-sm text-gray-600">
-          Uses edit-style pretraining to model fragment-level molecular semantics, enabling property prediction and retrosynthesis inference.
-        </p>
-        <div class="mt-3 text-xs mono text-gray-500">ICLR 2025</div>
-      </a>
-
-      <!-- (4) ExLM -->
-      <a
-        href="https://icml.cc/virtual/2025/poster/45731"
-        target="_blank"
-        rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline focus:outline-none focus:ring-2 focus:ring-accent/30 hover:border-accent/40"
-        aria-label="Open ExLM ICML 2025 page"
-      >
-        <h3 class="text-lg font-semibold clamp-2">Language Model with Enhanced Context (ExLM)</h3>
-        <p class="mt-2 text-sm text-gray-600">
-          Enhances language models’ ability to capture long-range dependencies, yielding strong performance on NLU tasks.
-        </p>
-        <div class="mt-3 text-xs mono text-gray-500">ICML 2025</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- Publications -->
-<section id="pubs" class="py-20 bg-gray-50">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Selected Publications</h2>
-    <div class="mt-2 text-xs text-gray-500">
-        * equal contribution · See a full list of papers on 
-        <a class="text-accent hover:underline"
-            href="https://scholar.google.com/citations?hl=en&user=n8kbAwQAAAAJ"
-            target="_blank" rel="noopener noreferrer">
-            Google Scholar
-        </a>.
-    </div>
-
-    <!-- AI for Science -->
-    <h3 class="mt-6 font-semibold">AI for Science</h3>
-    <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
-
-      <li>
-        <span class="font-semibold">ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling.</span> ICML 2024.
-        <div class="text-gray-700">
-          <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long<sup>*</sup>, Tianyu Lu, Junwei Yang, Xinyu Dai, Ming Zhang, Zaiqing Nie, Wei-Ying Ma, Hao Zhou.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=283cGgWfM2" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=283cGgWfM2" target="_blank" rel="noopener">OpenReview</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/ESM-AA" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">SMI-Editor: Edit-based SMILES Language Model with Fragment-level Supervision.</span> ICLR 2025.
-        <div class="text-gray-700">
-          <u>Kangjie Zheng</u>, Siyue Liang, Junwei Yang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=M29nUGozPa" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=M29nUGozPa" target="_blank" rel="noopener">OpenReview</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/smi-editor" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective.</span> ICML 2024.
-        <div class="text-gray-700">
-          Junwei Yang<sup>*</sup>, <u>Kangjie Zheng</u><sup>*</sup>, Siyu Long, Zaiqing Nie, Ming Zhang, Xinyu Dai, Wei-Ying Ma, Hao Zhou.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://openreview.net/pdf?id=inEuvSg0y1" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=inEuvSg0y1" target="_blank" rel="noopener">OpenReview</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/yjwtheonly/MolAE" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-    </ol>
-
-    <!-- Language Modeling -->
-    <h3 class="mt-8 font-semibold">Language Modeling</h3>
-    <ol class="mt-3 space-y-4 text-sm list-decimal pl-6 marker:text-gray-400">
-
-      <li>
-        <span class="font-semibold">ExLM: Rethinking the Impact of <code>[MASK]</code> Tokens in Masked Language Models.</span> ICML 2025.
-        <div class="text-gray-700">
-          <u>Kangjie Zheng</u>, Junwei Yang, Siyue Liang, Bin Feng, Zequn Liu, Wei Ju, Zhiping Xiao, Ming Zhang.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://arxiv.org/pdf/2501.13397.pdf" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://openreview.net/forum?id=IYOPfJwduh" target="_blank" rel="noopener">OpenReview</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/ExLM" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">Towards A Unified Training for Levenshtein Transformer.</span> ICASSP 2023.
-        <div class="text-gray-700">
-          <u>Kangjie Zheng</u>, Longyue Wang, Zhihao Wang, Binqi Chen, Ming Zhang, Zhaopeng Tu.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://ieeexplore.ieee.org/abstract/document/10094646" target="_blank" rel="noopener">Publisher</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/zhengkangjie/fairseq-dual-loss" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">A Decoding Algorithm Based on Directed Acyclic Transformers for Length-Control Summarization.</span> EMNLP Findings 2024.
-        <div class="text-gray-700">
-          Chenyang Huang, Hao Zhou, Cameron Jen, <u>Kangjie Zheng</u>, Osmar Zaiane, Lili Mou.
-        </div>
-        <div class="mt-1">
-          <a class="ml-0 text-accent hover:underline" href="https://aclanthology.org/2024.findings-emnlp.677.pdf" target="_blank" rel="noopener">PDF</a>
-          <a class="ml-3 text-gray-500 hover:text-accent" href="https://github.com/MANGA-UOFA/DAT-LenC" target="_blank" rel="noopener">Code</a>
-        </div>
-      </li>
-
-      <li>
-        <span class="font-semibold">Gloss Matters: Unlocking the Potential of Non-Autoregressive Sign Language Translation.</span> ACM MM 2025.
-        <div class="text-gray-700">
-          Zhihao Wang, Shiyu Liu, Zhiwei He, <u>Kangjie Zheng</u>, Liangying Shao, Junfeng Yao, Jinsong Su.
-        </div>
-      </li>
-    </ol>
-
-    <!-- Removed "Others" section per request -->
-  </div>
-</section>
-
-<!-- Academic Service -->
-<section id="service" class="pt-20 pb-6 bg-white">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Academic Service</h2>
-
-    <div class="mt-6 card rounded-2xl border border-black/5 glass p-6 shadow-card">
-      <h3 class="font-semibold">Program Committee / Reviewer</h3>
-      <ul class="mt-3 mb-0 space-y-2 text-sm">
-        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span>Conference on Neural Information Processing Systems (<span class="mono">NeurIPS’25</span>) — Reviewer</span>
-        </li>
-        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span>International Conference on Learning Representations (<span class="mono">ICLR’24, ’25</span>) — Reviewer</span>
-        </li>
-        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span>International Conference on Machine Learning (<span class="mono">ICML’24, ’25</span>) — Reviewer</span>
-        </li>
-        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span>AAAI Conference on Artificial Intelligence (<span class="mono">AAAI’25</span>) — Reviewer</span>
-        </li>
-        <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-accent"></span>
-          <span>ACL Rolling Review (<span class="mono">ACL ARR</span>) — Reviewer</span>
-        </li>
-      </ul>
-
-
-    </div>
-  </div>
-</section>
-
-
-<!-- Talks -->
-<section id="talks" class="pt-6 pb-20 bg-white">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Talks &amp; Presentations</h2>
-
-    <!-- Top 3 (default visible) -->
-    <div class="mt-6 grid md:grid-cols-3 gap-6 text-sm">
-      <a
-        href="https://iclr.cc/virtual/2025/poster/29960"
-        target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
-        aria-label="SMI-Editor at ICLR 2025"
-      >
-        <div class="mono text-xs text-gray-500">2025 · ICLR</div>
-        <div class="mt-1 font-semibold">SMI-Editor Poster · Singapore</div>
-      </a>
-
-      <a
-        href="https://icml.cc/virtual/2024/poster/35119"
-        target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
-        aria-label="ESM All-Atom at ICML 2024"
-      >
-        <div class="mono text-xs text-gray-500">2024 · ICML</div>
-        <div class="mt-1 font-semibold">ESM-AA Poster · Vienna</div>
-      </a>
-
-      <a
-        href="https://icml.cc/virtual/2024/poster/33340"
-        target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
-        aria-label="Mol-AE at ICML 2024"
-      >
-        <div class="mono text-xs text-gray-500">2024 · ICML</div>
-        <div class="mt-1 font-semibold">Mol-AE Poster · Vienna</div>
-      </a>
-    </div>
-
-    <!-- More talks (hidden by default) -->
-    <div id="more-talks" class="mt-6 grid md:grid-cols-3 gap-6 text-sm hidden">
+  
+    <!-- Divider (only on small screens when stacked) -->
+    <div class="sm:hidden my-8 subtle-divider"></div>
+  
+    <!-- More talks (hidden by default; desktop shows by default) -->
+    <div id="more-talks" class="mt-6 grid sm:grid-cols-3 gap-6 text-sm hidden md:grid">
+  
+      <!-- Dual-LevT (ICASSP 2023) -->
       <a
         href="https://docs.google.com/presentation/d/1Lf5yCA881qYJgmSGiLYXZRqfGE3gWz_uj9n4O_AbaY8/edit?usp=sharing"
         target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
         aria-label="DualLevT at ICASSP 2023"
       >
-        <div class="mono text-xs text-gray-500">2023 · ICASSP</div>
-        <div class="mt-1 font-semibold">Dual-LevT Poster · Rhodes</div>
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+          <span class="mono">2023</span><span>·</span><span class="mono">ICASSP</span>
+          <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Poster</span>
+        </div>
+        <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">Dual-LevT</div>
+        <div class="mt-1 text-[11px] text-gray-500">Rhodes, Greece</div>
       </a>
-
+  
+      <!-- Invited · SAS — The Era of Large Models -->
       <a
         href="https://docs.google.com/presentation/d/1NOSPeVTzzrIupmpBeRmCg7yPhLmlkYuNuRQW8MZir7s/edit?usp=sharing"
         target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
         aria-label="Invited Talk at SAS: Large Models"
       >
-        <div class="mono text-xs text-gray-500">Invited · SAS</div>
-        <div class="mt-1 font-semibold">The Era of Large Models</div>
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+          <span class="mono">2023</span><span>·</span><span class="mono">Online</span>
+          <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Talk</span>
+        </div>
+        <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">The Era of Large Models</div>
+        <div class="mt-1 text-[11px] text-gray-500">SAS Company</div>
       </a>
-
+  
+      <!-- Invited · SAS — Dual Levenshtein Transformer -->
       <a
         href="https://docs.google.com/presentation/d/1Lf5yCA881qYJgmSGiLYXZRqfGE3gWz_uj9n4O_AbaY8/edit?usp=sharing"
         target="_blank" rel="noopener"
-        class="card block rounded-2xl border border-black/5 glass p-6 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
+        class="card block rounded-2xl border border-black/5 glass p-4 shadow-card no-underline hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-[8rem] flex flex-col justify-between"
         aria-label="Invited Talk at SAS: Dual Levenshtein Transformer"
       >
-        <div class="mono text-xs text-gray-500">Invited · SAS</div>
-        <div class="mt-1 font-semibold">Dual Levenshtein Transformer</div>
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-wide text-gray-500">
+          <span class="mono">2022</span><span>·</span><span class="mono">Online</span>
+          <span class="inline-flex items-center rounded-full border border-black/10 bg-black/5 px-1.5 py-[1px] text-[9px] leading-4 normal-case">Talk</span>
+        </div>
+        <div class="mt-0.5 font-semibold leading-tight text-gray-900 clamp-2">Dual Levenshtein Transformer</div>
+        <div class="mt-1 text-[11px] text-gray-500">SAS Company</div>
       </a>
+  
     </div>
-
-    <div class="mt-6">
+  
+    <div class="mt-6 md:text-right md:hidden">
       <button
         id="toggle-talks"
         class="rounded-xl border border-black/10 px-4 py-2 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
@@ -662,22 +707,28 @@
       </button>
     </div>
   </div>
+  
+  
+          </div>
+        </div>
+      </div>
 
-  <script>
-    (function () {
-      const btn = document.getElementById('toggle-talks');
-      const more = document.getElementById('more-talks');
-      if (!btn || !more) return;
-      btn.addEventListener('click', () => {
-        const wasHidden = more.classList.contains('hidden');
-        more.classList.toggle('hidden');
-        btn.setAttribute('aria-expanded', String(wasHidden));
-        btn.textContent = wasHidden ? 'Show fewer' : 'Show all talks';
-      });
-    })();
-  </script>
-</section>
-
+      <!-- Toggle logic scoped to this section only -->
+      <script>
+        (function () {
+          const root = document.currentScript?.closest('section') || document;
+          const btn  = root.querySelector('#toggle-talks');
+          const more = root.querySelector('#more-talks');
+          if (!btn || !more) return;
+          btn.addEventListener('click', () => {
+            const wasHidden = more.classList.contains('hidden');
+            more.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', String(wasHidden));
+            btn.textContent = wasHidden ? 'Show fewer' : 'Show all talks';
+          });
+        })();
+      </script>
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="py-20 bg-gray-50">
