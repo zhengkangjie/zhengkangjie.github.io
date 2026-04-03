@@ -51,6 +51,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="alternate" hreflang="zh-CN" href="./zh/" />
 
     <style>
       section > *:last-child { margin-bottom: 0; }
@@ -205,6 +206,16 @@
 
             <!-- Right actions: theme toggle + contact (mobile) -->
             <div class="flex items-center gap-2">
+              <a
+                href="./zh/"
+                lang="zh-CN"
+                hreflang="zh-CN"
+                class="inline-flex items-center rounded-full border border-black/10 px-2.5 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm hover:border-accent/40 hover:text-accent"
+                aria-label="Switch to Chinese page"
+              >
+                中文
+              </a>
+
               <button
                 id="theme-toggle"
                 class="relative h-8 w-8 rounded-full border border-black/10 p-1.5 hover:border-accent/40 focus:outline-none focus:ring-2 focus:ring-accent/30"
