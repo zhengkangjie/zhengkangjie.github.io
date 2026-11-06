@@ -31,17 +31,18 @@
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const dialog = document.getElementById('muss-dialog');
-  let dialogOpener = null;
-  if (dialog) {
-    document.querySelectorAll('[data-dialog="muss-dialog"]').forEach((button) => {
-      button.addEventListener('click', () => {
-        dialogOpener = button;
-        dialog.showModal();
-        root.classList.add('dialog-open');
-        dialog.scrollTop = 0;
-      });
+  const dialogOpeners = new WeakMap();
+  document.querySelectorAll('[data-dialog]').forEach((button) => {
+    const dialog = document.getElementById(button.dataset.dialog);
+    if (!dialog?.matches('dialog.paper-dialog')) return;
+    button.addEventListener('click', () => {
+      dialogOpeners.set(dialog, button);
+      dialog.showModal();
+      root.classList.add('dialog-open');
+      dialog.scrollTop = 0;
     });
+  });
+  document.querySelectorAll('dialog.paper-dialog').forEach((dialog) => {
     dialog.querySelector('[data-close-dialog]')?.addEventListener('click', () => dialog.close());
     // Native Escape dismisses the modal. Clicking its backdrop also closes it.
     let pointerStartedOnBackdrop = false;
@@ -57,8 +58,11 @@
       pointerStartedOnBackdrop = false;
     });
     dialog.addEventListener('close', () => {
-      root.classList.remove('dialog-open');
-      dialogOpener?.focus({ preventScroll: true });
+      pointerStartedOnBackdrop = false;
+      if (!document.querySelector('dialog.paper-dialog[open]')) {
+        root.classList.remove('dialog-open');
+        dialogOpeners.get(dialog)?.focus({ preventScroll: true });
+      }
     });
-  }
+  });
 })();

@@ -191,3 +191,13 @@ html.dark{color-scheme:dark}.dark body,.dark .bg-bg{background-color:#0b1020;col
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.card:hover{transform:none}}
 
 .abstract-language-note{font-size:.8rem!important;font-weight:600;color:#475569}.abstract-original{margin-top:1.2rem;padding-top:1rem;border-top:1px solid #cbd5e1}.abstract-original summary{cursor:pointer;font-size:.85rem;font-weight:600;color:#2563eb}.abstract-original p{margin-top:.8rem}.dark .abstract-language-note{color:#cbd5e1}.dark .abstract-original{border-color:#334155}.dark .abstract-original summary{color:#93c5fd}
+
+/* Publication abstracts share the same dialog in both language versions. */
+.dialog-resources{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:13px}
+.dialog-resources a,.dialog-source a,.dialog-abstract a{color:#2563eb;text-underline-offset:3px}
+.dialog-resources a:hover,.dialog-source a:hover,.dialog-abstract a:hover{text-decoration:underline}
+.dialog-abstract>p+p{margin-top:1em}
+.dialog-abstract a{overflow-wrap:anywhere}
+.dialog-source{margin-top:20px;padding-top:14px;border-top:1px solid #e2e8f0;font-size:12px;line-height:1.7;color:#64748b}
+.dark .dialog-resources a,.dark .dialog-source a,.dark .dialog-abstract a{color:#8bb7ff}
+.dark .dialog-source{border-color:#334155;color:#94a3b8}
